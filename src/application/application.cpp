@@ -1,4 +1,5 @@
 #include "application.h"
+#include <managers/input/input_manager.h>
 #include <utils/render_utils.h>
 
 void Application::run() {
@@ -117,6 +118,8 @@ void Application::handle_events() {
     default:
       break;
     }
+
+    InputManager::get()->handle_events(event);
   }
 }
 

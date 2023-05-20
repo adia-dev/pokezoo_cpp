@@ -270,3 +270,4 @@ dist
 # End of https://www.toptal.com/developers/gitignore/api/c,c++,macos,node,visualstudiocode,wasm
 
 build/
+checks.json
