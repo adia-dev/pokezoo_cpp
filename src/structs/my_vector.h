@@ -40,6 +40,18 @@ public:
     return x * other.y - y * other.x;
   }
 
+  Vector2 &to_coords(int tile_size) {
+    x /= tile_size;
+    y /= tile_size;
+    return *this;
+  }
+
+  Vector2 &to_pixels(int tile_size) {
+    x *= tile_size;
+    y *= tile_size;
+    return *this;
+  }
+
   friend std::ostream &operator<<(std::ostream &os, const Vector2 &v) {
     os << "(" << v.x << ", " << v.y << ")";
     return os;
@@ -59,6 +71,18 @@ public:
 
   static T cross_product(const Vector2 &v1, const Vector2 &v2) {
     return v1.cross_product(v2);
+  }
+
+  static Vector2 lerp(const Vector2 &v1, const Vector2 &v2, float t) {
+    return v1.lerp(v2, t);
+  }
+
+  static Vector2 to_coords(const Vector2 &v, int tile_size) {
+    return Vector2(v.x / tile_size, v.y / tile_size);
+  }
+
+  static Vector2 to_pixels(const Vector2 &v, int tile_size) {
+    return Vector2(v.x * tile_size, v.y * tile_size);
   }
 
   static Vector2<T> zero() { return Vector2<T>(0, 0); }
