@@ -1,6 +1,7 @@
 #pragma once
 
 #include <config/config.h>
+#include <map/map.h>
 
 class Application {
 public:
@@ -30,6 +31,9 @@ private:
 
   // config
   std::unique_ptr<ApplicationConfig> _config = nullptr;
+
+  // instances
+  std::unique_ptr<Map> _map = nullptr;
 
   // states
   bool _is_running = false;

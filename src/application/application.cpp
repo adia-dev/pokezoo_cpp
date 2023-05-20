@@ -55,6 +55,10 @@ void Application::init() {
     exit(EXIT_FAILURE);
   }
 
+  // init instances
+  _map = std::make_unique<Map>();
+  _map->load("assets/maps/map1.json");
+
   // set initial state
   _is_running = true;
   _last_frame_ticks = SDL_GetTicks();
