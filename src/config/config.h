@@ -44,9 +44,8 @@ struct ApplicationConfig {
   WindowConfig window_config;
   Version version = {0, 0, 1};
 
-  const char *resource_path = "resources/";
-  const char *map_path = "maps/";
-  const char *tileset_path = "tilesets/";
-  const char *font_path = "fonts/";
-  const char *audio_path = "audio/";
+  inline static std::string font_path = "../src/assets/fonts/arial.ttf";
+  inline static std::string map_path = "../src/assets/maps/map1.json";
+  inline static std::string texture_path = "../src/assets/textures/";
+  inline static std::string tileset_path = "../src/assets/tilesets/";
 };

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <config/config.h>
+#include <managers/asset_manager.h>
 #include <map/map.h>
 
 class Application {
@@ -15,6 +16,20 @@ public:
   }
 
   static void run();
+
+  bool is_running() const { return _is_running; }
+
+  double get_delta_time() const { return _delta_time; }
+  uint32_t get_last_frame_ticks() const { return _last_frame_ticks; }
+
+  SDL_Renderer *get_renderer() { return _renderer.get(); }
+  SDL_Window *get_window() { return _window.get(); }
+
+  void set_config(std::unique_ptr<ApplicationConfig> config) {
+    _config = std::move(config);
+  }
+
+  void set_map(std::unique_ptr<Map> map) { _map = std::move(map); }
 
 private:
   void init();
