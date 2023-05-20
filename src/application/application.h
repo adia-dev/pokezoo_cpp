@@ -1,7 +1,7 @@
 #pragma once
 
 #include <config/config.h>
-#include <managers/asset_manager.h>
+#include <managers/asset/asset_manager.h>
 #include <map/map.h>
 
 class Application {
