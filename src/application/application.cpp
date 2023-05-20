@@ -25,12 +25,14 @@ void Application::init() {
 
   // initialize SDL
   if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
+    LoggerManager::log_error("SDL_Init Error: " + std::string(SDL_GetError()));
     std::cerr << "SDL_Init Error: " << SDL_GetError() << std::endl;
     exit(EXIT_FAILURE);
   }
 
   // initialize SDL_ttf
   if (TTF_Init() != 0) {
+    LoggerManager::log_error("TTF_Init Error: " + std::string(TTF_GetError()));
     std::cerr << "TTF_Init Error: " << TTF_GetError() << std::endl;
     exit(EXIT_FAILURE);
   }
@@ -44,6 +46,8 @@ void Application::init() {
       SDL_DestroyWindow);
 
   if (_window == nullptr) {
+    LoggerManager::log_error("SDL_CreateWindow Error: " +
+                             std::string(SDL_GetError()));
     std::cerr << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
     exit(EXIT_FAILURE);
   }
@@ -53,9 +57,13 @@ void Application::init() {
       SDL_DestroyRenderer);
 
   if (_renderer == nullptr) {
+    LoggerManager::log_error("SDL_CreateRenderer Error: " +
+                             std::string(SDL_GetError()));
     std::cerr << "SDL_CreateRenderer Error: " << SDL_GetError() << std::endl;
     exit(EXIT_FAILURE);
   }
+
+  LoggerManager::init();
 
   // init instances
   _map = std::make_unique<Map>();
@@ -65,7 +73,7 @@ void Application::init() {
   _is_running = true;
   _last_frame_ticks = SDL_GetTicks();
 
-  std::cout << "Application initialized" << std::endl;
+  LoggerManager::log_info("Application initialized");
 }
 
 void Application::loop() {
@@ -127,5 +135,7 @@ void Application::clean() {
   SDL_Quit();
   TTF_Quit();
 
-  std::cout << "Application cleaned" << std::endl;
+  LoggerManager::get()->log_info("Cleaning up...");
+
+  LoggerManager::get()->clean();
 }

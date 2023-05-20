@@ -3,11 +3,12 @@
 void Map::load(const char *name) {
   // TODO: implement
 
-  std::cout << "Loading map: " << name << std::endl;
+  LoggerManager::log_info("Loading map: " + std::string(name));
 }
 
 void Map::render(SDL_Renderer *renderer) {
   if (renderer == nullptr) {
+    LoggerManager::log_error("SDL_Renderer is null");
     std::cerr << "SDL_Renderer is null" << std::endl;
     exit(EXIT_FAILURE);
   }

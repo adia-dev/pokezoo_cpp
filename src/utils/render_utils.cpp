@@ -6,11 +6,13 @@ namespace RenderUtils {
 void render_texture(SDL_Renderer *renderer, SDL_Texture *texture,
                     SDL_Rect src_rect, SDL_Rect dst_rect, bool repeat) {
   if (renderer == nullptr) {
+    LoggerManager::log_error("SDL_Renderer is null");
     std::cerr << "SDL_Renderer is null" << std::endl;
     exit(EXIT_FAILURE);
   }
 
   if (texture == nullptr) {
+    LoggerManager::log_error("SDL_Texture is null");
     std::cerr << "SDL_Texture is null" << std::endl;
     exit(EXIT_FAILURE);
   }
@@ -42,11 +44,13 @@ void render_texture(SDL_Renderer *renderer, SDL_Texture *texture,
 void render_text(SDL_Renderer *renderer, TTF_Font *font, const char *text,
                  SDL_Color color, int x, int y) {
   if (renderer == nullptr) {
+    LoggerManager::log_error("SDL_Renderer is null");
     std::cerr << "SDL_Renderer is null" << std::endl;
     exit(EXIT_FAILURE);
   }
 
   if (font == nullptr) {
+    LoggerManager::log_error("TTF_Font is null");
     std::cerr << "TTF_Font is null" << std::endl;
     exit(EXIT_FAILURE);
   }
@@ -54,6 +58,7 @@ void render_text(SDL_Renderer *renderer, TTF_Font *font, const char *text,
   SDL_Surface *surface = TTF_RenderText_Solid(font, text, color);
 
   if (surface == nullptr) {
+    LoggerManager::log_error("SDL_Surface is null");
     std::cerr << "SDL_Surface is null" << std::endl;
     exit(EXIT_FAILURE);
   }
@@ -61,6 +66,7 @@ void render_text(SDL_Renderer *renderer, TTF_Font *font, const char *text,
   SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
 
   if (texture == nullptr) {
+    LoggerManager::log_error("SDL_Texture is null");
     std::cerr << "SDL_Texture is null" << std::endl;
     exit(EXIT_FAILURE);
   }

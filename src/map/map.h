@@ -1,6 +1,7 @@
 #pragma once
 
 #include <config/config.h>
+#include <managers/logger/logger_manager.h>
 
 enum LayerType { TILE_LAYER, OBJECT_LAYER, OBSTACLE_LAYER };
 
@@ -22,11 +23,13 @@ struct Layer {
 
   void render(SDL_Renderer *renderer) {
     if (renderer == nullptr) {
+      LoggerManager::log_error("SDL_Renderer is null");
       std::cerr << "SDL_Renderer is null" << std::endl;
       exit(EXIT_FAILURE);
     }
 
     if (texture == nullptr) {
+      LoggerManager::log_error("SDL_Texture is null");
       std::cerr << "SDL_Texture is null" << std::endl;
       exit(EXIT_FAILURE);
     }
