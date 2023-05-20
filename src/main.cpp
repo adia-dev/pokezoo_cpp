@@ -1,4 +1,6 @@
-#include <SDL.h>
-#include <iostream>
+#include <application/application.h>
 
-int main() { return 0; }
+int main() {
+  Application::run();
+  return 0;
+}
