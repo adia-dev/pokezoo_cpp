@@ -1,4 +1,5 @@
 #include "application.h"
+#include <utils/render_utils.h>
 
 void Application::run() {
   Application *app = Application::get();
@@ -86,6 +87,12 @@ void Application::loop() {
 void Application::render() {
   SDL_SetRenderDrawColor(_renderer.get(), 0, 0, 0, 255);
   SDL_RenderClear(_renderer.get());
+
+  RenderUtils::render_texture(
+      _renderer.get(),
+      AssetManager::get_texture("pokemons_4th_gen.png", _renderer.get()), 0, 0,
+      32, 32);
+
   SDL_RenderPresent(_renderer.get());
 }
 
