@@ -90,8 +90,8 @@ void Application::render() {
 
   RenderUtils::render_texture(
       _renderer.get(),
-      AssetManager::get_texture("pokemons_4th_gen.png", _renderer.get()), 0, 0,
-      32, 32);
+      AssetManager::get_texture("pokemons_4th_gen.png", _renderer.get()),
+      {0, 0, 32, 32}, {0, 0, 32, 32});
 
   SDL_RenderPresent(_renderer.get());
 }

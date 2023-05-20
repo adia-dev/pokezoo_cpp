@@ -25,6 +25,8 @@ public:
   SDL_Renderer *get_renderer() { return _renderer.get(); }
   SDL_Window *get_window() { return _window.get(); }
 
+  static ApplicationConfig *get_config() { return get()->_config.get(); }
+
   void set_config(std::unique_ptr<ApplicationConfig> config) {
     _config = std::move(config);
   }

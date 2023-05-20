@@ -1,9 +1,10 @@
 #include "render_utils.h"
+#include <application/application.h>
 
 namespace RenderUtils {
 
-void render_texture(SDL_Renderer *renderer, SDL_Texture *texture, int x, int y,
-                    int w, int h) {
+void render_texture(SDL_Renderer *renderer, SDL_Texture *texture,
+                    SDL_Rect src_rect, SDL_Rect dst_rect, bool repeat) {
   if (renderer == nullptr) {
     std::cerr << "SDL_Renderer is null" << std::endl;
     exit(EXIT_FAILURE);
@@ -14,24 +15,27 @@ void render_texture(SDL_Renderer *renderer, SDL_Texture *texture, int x, int y,
     exit(EXIT_FAILURE);
   }
 
-  SDL_Rect src_rect;
-  SDL_Rect dst_rect;
-
   src_rect.w = src_rect.h = dst_rect.w = dst_rect.h = 32;
 
-  for (int row = 0; row < h; row++) {
-    dst_rect.y = row * 32;
+  if (repeat) {
+    for (int row = 0; row < Application::get_config()->window_config.height;
+         row++) {
+      dst_rect.y = row * 32;
 
-    for (int col = 0; col < w; col++) {
-      dst_rect.x = col * 32;
+      for (int col = 0; col < Application::get_config()->window_config.width;
+           col++) {
+        dst_rect.x = col * 32;
 
-      uint16_t tile_id = 1;
+        uint16_t tile_id = 1;
 
-      if (tile_id != 0) {
-        src_rect.x = (tile_id - 1) * 32;
-        SDL_RenderCopy(renderer, texture, &src_rect, &dst_rect);
+        if (tile_id != 0) {
+          src_rect.x = (tile_id - 1) * 32;
+          SDL_RenderCopy(renderer, texture, &src_rect, &dst_rect);
+        }
       }
     }
+  } else {
+    SDL_RenderCopy(renderer, texture, &src_rect, &dst_rect);
   }
 }
 
