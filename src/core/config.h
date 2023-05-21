@@ -40,6 +40,7 @@ struct WindowConfig {
   int width;
   int height;
   int tile_size = DEFAULT_TILE_SIZE;
+  uint16_t max_fps = 120;
   uint32_t flags;
 };
 

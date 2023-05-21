@@ -29,6 +29,8 @@ public:
   static Vector2i get_mouse_position() { return get()->_mouse_position; }
   static Vector2i get_mouse_delta() { return get()->_mouse_delta; }
 
+  static Vector2i get_directional_input();
+
   friend std::ostream &operator<<(std::ostream &os, const InputManager &im) {
     // make it seem like it is a json file
     os << "{\n";

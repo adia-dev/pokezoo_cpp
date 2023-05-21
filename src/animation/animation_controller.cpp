@@ -10,7 +10,8 @@ void AnimationController::add_animation(const std::string &name,
 }
 
 void AnimationController::play_animation(const std::string &name) {
-  if (name == _current_animation) {
+  if (name == _current_animation ||
+      _animations.find(name) == _animations.end()) {
     return;
   }
 
@@ -24,7 +25,7 @@ Frame AnimationController::get_current_frame() const {
   return animation.frames[_current_frame_index];
 }
 
-void AnimationController::update(float delta_time) {
+void AnimationController::update(double delta_time) {
   delta_time *= 1000; // convert to milliseconds to match the timer time unit
 
   if (!_is_playing || _current_animation == "" ||

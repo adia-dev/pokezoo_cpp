@@ -45,6 +45,6 @@ void Sprite::render(SDL_Renderer *renderer) {
   SDL_RenderCopy(renderer, _texture, &_src_rect, &_dest_rect);
 }
 
-void Sprite::update(float delta_time) {
+void Sprite::update(double delta_time) {
   _animation_controller.update(delta_time);
 }

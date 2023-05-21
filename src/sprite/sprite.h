@@ -16,7 +16,7 @@ public:
   virtual ~Sprite() = default;
 
   virtual void render(SDL_Renderer *renderer);
-  virtual void update(float delta_time);
+  virtual void update(double delta_time);
 
   void set_direction(Direction direction) { _direction = direction; }
 

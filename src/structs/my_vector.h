@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cmath>
+#include <core/enums.h>
 #include <iostream>
 
 template <typename T> class Vector2 {
@@ -94,6 +95,20 @@ public:
   static Vector2<T> right() { return Vector2<T>(1, 0); }
 
   static Vector2<T> unit() { return Vector2<T>(1, 1); }
+
+  static Direction direction_from_vector(const Vector2<T> &v) {
+    if (v.x == 0 && v.y == -1) {
+      return Direction::UP;
+    } else if (v.x == 0 && v.y == 1) {
+      return Direction::DOWN;
+    } else if (v.x == -1 && v.y == 0) {
+      return Direction::LEFT;
+    } else if (v.x == 1 && v.y == 0) {
+      return Direction::RIGHT;
+    } else {
+      return Direction::NONE;
+    }
+  }
 
   // operator overloads
 

@@ -11,7 +11,7 @@ public:
   void play_animation(const std::string &name);
   Frame get_current_frame() const;
 
-  void update(float delta_time);
+  void update(double delta_time);
 
   bool is_playing() const { return _is_playing; }
   void resume() { _is_playing = true; }

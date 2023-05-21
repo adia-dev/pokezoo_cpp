@@ -34,13 +34,13 @@ void InputManager::handle_events(SDL_Event &event) {
 
 bool InputManager::is_key_down(SDL_KeyCode key) {
   auto *manager = InputManager::get();
-  return manager->_keys.count(key) > 0 && manager->_keys[key] == true;
+  return manager->_keys[key];
 }
 
 bool InputManager::are_keys_down(const std::vector<SDL_KeyCode> &keys) {
   auto *manager = InputManager::get();
   for (auto key : keys) {
-    if (manager->_keys.count(key) == 0 || manager->_keys[key] == false) {
+    if (!manager->_keys[key]) {
       return false;
     }
   }
@@ -50,17 +50,36 @@ bool InputManager::are_keys_down(const std::vector<SDL_KeyCode> &keys) {
 
 bool InputManager::is_key_up(SDL_KeyCode key) {
   auto *manager = InputManager::get();
-  return manager->_keys.count(key) == 0 || manager->_keys[key] == false;
+  return !manager->_keys[key];
 }
 
 bool InputManager::is_mouse_down(int button) {
   auto *manager = InputManager::get();
-  return manager->_mouse_buttons.count(button) > 0 &&
-         manager->_mouse_buttons[button] == true;
+  return manager->_mouse_buttons[button];
 }
 
 bool InputManager::is_mouse_up(int button) {
   auto *manager = InputManager::get();
-  return manager->_mouse_buttons.count(button) == 0 ||
-         manager->_mouse_buttons[button] == false;
+  return !manager->_mouse_buttons[button];
+}
+
+Vector2i InputManager::get_directional_input() {
+  // return the direction of the keys clamped, not normalized, can only go one
+  // diirection at a time
+  auto *manager = InputManager::get();
+  Vector2i direction = Vector2i::zero();
+
+  if (manager->_keys[SDLK_z] || manager->_keys[SDLK_UP]) {
+    direction.y = -1;
+  } else if (manager->_keys[SDLK_s] || manager->_keys[SDLK_DOWN]) {
+    direction.y = 1;
+  }
+
+  if (manager->_keys[SDLK_a] || manager->_keys[SDLK_LEFT]) {
+    direction.x = -1;
+  } else if (manager->_keys[SDLK_d] || manager->_keys[SDLK_RIGHT]) {
+    direction.x = 1;
+  }
+
+  return direction;
 }

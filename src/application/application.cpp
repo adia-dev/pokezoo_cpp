@@ -115,6 +115,10 @@ void Application::init_sprites() {
 
 void Application::update() {
   uint32_t current_frame_ticks = SDL_GetTicks();
+  int fps = 1000 / (current_frame_ticks - _last_frame_ticks);
+  while (fps > Application::get_config()->window_config.max_fps) {
+    fps = 1000 / (SDL_GetTicks() - _last_frame_ticks);
+  }
   _delta_time = (current_frame_ticks - _last_frame_ticks) / 1000.0f;
   _last_frame_ticks = current_frame_ticks;
 
