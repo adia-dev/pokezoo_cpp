@@ -39,6 +39,7 @@ struct WindowConfig {
   const char *title;
   int width;
   int height;
+  int tile_size = DEFAULT_TILE_SIZE;
   uint32_t flags;
 };
 

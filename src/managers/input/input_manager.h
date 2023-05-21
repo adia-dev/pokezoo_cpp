@@ -19,9 +19,9 @@ public:
 
   void handle_events(SDL_Event &event);
 
-  static bool is_key_down(SDL_Scancode key);
-  static bool are_keys_down(const std::vector<SDL_Scancode> &keys);
-  static bool is_key_up(SDL_Scancode key);
+  static bool is_key_down(SDL_KeyCode key);
+  static bool are_keys_down(const std::vector<SDL_KeyCode> &keys);
+  static bool is_key_up(SDL_KeyCode key);
 
   static bool is_mouse_down(int button);
   static bool is_mouse_up(int button);
@@ -55,7 +55,7 @@ public:
   }
 
 private:
-  std::map<SDL_Scancode, bool> _keys;
+  std::map<int, bool> _keys;
   std::map<int, bool> _mouse_buttons;
   Vector2i _mouse_position;
   Vector2i _mouse_delta;

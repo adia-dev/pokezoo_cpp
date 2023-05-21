@@ -13,10 +13,10 @@ public:
          float scale = 1);
   Sprite(SDL_Texture *texture, int x, int y, int width, int height,
          float scale = 1);
-  ~Sprite() = default;
+  virtual ~Sprite() = default;
 
-  void render(SDL_Renderer *renderer);
-  void update(float delta_time);
+  virtual void render(SDL_Renderer *renderer);
+  virtual void update(float delta_time);
 
   void set_direction(Direction direction) { _direction = direction; }
 
@@ -85,7 +85,7 @@ public:
     return os;
   }
 
-private:
+protected:
   std::string _id;
   Direction _direction = Direction::DOWN;
   AnimationController _animation_controller;

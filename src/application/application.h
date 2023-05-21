@@ -5,6 +5,7 @@
 #include <managers/logger/logger_manager.h>
 #include <map/map.h>
 #include <sprite/sprite.h>
+#include <sprite/trainer.h>
 
 class Application {
 public:
@@ -37,6 +38,7 @@ public:
 
 private:
   void init();
+  void init_trainer();
   void init_sprites();
 
   void loop();
@@ -56,6 +58,7 @@ private:
   // instances
   std::unique_ptr<Map> _map = nullptr;
   std::vector<std::unique_ptr<Sprite>> _sprites;
+  std::unique_ptr<Trainer> _trainer = nullptr;
 
   // states
   bool _is_running = false;

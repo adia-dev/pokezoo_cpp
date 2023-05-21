@@ -84,4 +84,28 @@ void render_text(SDL_Renderer *renderer, TTF_Font *font, const char *text,
   SDL_DestroyTexture(texture);
 }
 
+void render_grid(SDL_Renderer *renderer, int width, int height, int tile_size,
+                 const SDL_Color &color) {
+  if (renderer == nullptr) {
+    LoggerManager::log_fatal("SDL_Renderer is null");
+    exit(EXIT_FAILURE);
+  }
+
+  SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
+
+  int x = 0;
+  int y = 0;
+  for (int row = 0; row < height; row++) {
+    SDL_RenderDrawLine(renderer, x, y + row * tile_size, x + width * tile_size,
+                       y + row * tile_size);
+  }
+
+  for (int col = 0; col < width; col++) {
+    SDL_RenderDrawLine(renderer, x + col * tile_size, y, x + col * tile_size,
+                       y + height * tile_size);
+  }
+
+  SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+}
+
 } // namespace RenderUtils

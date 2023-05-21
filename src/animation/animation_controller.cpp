@@ -25,6 +25,8 @@ Frame AnimationController::get_current_frame() const {
 }
 
 void AnimationController::update(float delta_time) {
+  delta_time *= 1000; // convert to milliseconds to match the timer time unit
+
   if (!_is_playing || _current_animation == "" ||
       _animations.find(_current_animation) == _animations.end()) {
     return;

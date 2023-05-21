@@ -25,8 +25,6 @@ void Sprite::init(int x, int y, int width, int height, float scale) {
   _dest_rect.h = height * scale;
 
   _id = UUID::generate_v4_ish();
-
-  LoggerManager::log_info(*this);
 }
 
 void Sprite::render(SDL_Renderer *renderer) {

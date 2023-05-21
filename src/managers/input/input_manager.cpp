@@ -1,5 +1,7 @@
 #include "input_manager.h"
 
+#include <managers/logger/logger_manager.h>
+
 void InputManager::clean() {
   _keys.clear();
   _mouse_buttons.clear();
@@ -8,10 +10,10 @@ void InputManager::clean() {
 void InputManager::handle_events(SDL_Event &event) {
   switch (event.type) {
   case SDL_KEYDOWN:
-    _keys[event.key.keysym.scancode] = true;
+    _keys[event.key.keysym.sym] = true;
     break;
   case SDL_KEYUP:
-    _keys[event.key.keysym.scancode] = false;
+    _keys[event.key.keysym.sym] = false;
     break;
   case SDL_MOUSEBUTTONDOWN:
     _mouse_buttons[event.button.button] = true;
@@ -30,12 +32,12 @@ void InputManager::handle_events(SDL_Event &event) {
   }
 }
 
-bool InputManager::is_key_down(SDL_Scancode key) {
+bool InputManager::is_key_down(SDL_KeyCode key) {
   auto *manager = InputManager::get();
   return manager->_keys.count(key) > 0 && manager->_keys[key] == true;
 }
 
-bool InputManager::are_keys_down(const std::vector<SDL_Scancode> &keys) {
+bool InputManager::are_keys_down(const std::vector<SDL_KeyCode> &keys) {
   auto *manager = InputManager::get();
   for (auto key : keys) {
     if (manager->_keys.count(key) == 0 || manager->_keys[key] == false) {
@@ -46,7 +48,7 @@ bool InputManager::are_keys_down(const std::vector<SDL_Scancode> &keys) {
   return true;
 }
 
-bool InputManager::is_key_up(SDL_Scancode key) {
+bool InputManager::is_key_up(SDL_KeyCode key) {
   auto *manager = InputManager::get();
   return manager->_keys.count(key) == 0 || manager->_keys[key] == false;
 }

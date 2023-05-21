@@ -63,6 +63,8 @@ void Application::init() {
     exit(EXIT_FAILURE);
   }
 
+  SDL_SetRenderDrawBlendMode(_renderer.get(), SDL_BLENDMODE_BLEND);
+
   LoggerManager::init();
 
   // init instances
@@ -73,9 +75,21 @@ void Application::init() {
   _is_running = true;
   _last_frame_ticks = SDL_GetTicks();
 
+  init_trainer();
   init_sprites();
 
   LoggerManager::log_info("Application initialized");
+}
+
+void Application::init_trainer() {
+  LoggerManager::log_info("Initializing trainer");
+
+  Trainer trainer("pokemons_4th_gen.png", 0, 0, 32, 32);
+  trainer.set_name("Ash");
+
+  _trainer = std::make_unique<Trainer>(trainer);
+
+  LoggerManager::log_info("Initializing trainer done");
 }
 
 void Application::init_sprites() {
@@ -99,6 +113,44 @@ void Application::init_sprites() {
   LoggerManager::log_info("Initializing sprites done");
 }
 
+void Application::update() {
+  uint32_t current_frame_ticks = SDL_GetTicks();
+  _delta_time = (current_frame_ticks - _last_frame_ticks) / 1000.0f;
+  _last_frame_ticks = current_frame_ticks;
+
+  // update instances
+  // _map->update(_delta_time);
+
+  if (_trainer) {
+    _trainer->update(_delta_time);
+  }
+
+  // update sprites
+  for (auto &sprite : _sprites) {
+    sprite->update(_delta_time);
+  }
+}
+
+void Application::render() {
+  SDL_SetRenderDrawColor(_renderer.get(), 0, 0, 0, 255);
+  SDL_RenderClear(_renderer.get());
+
+  RenderUtils::render_grid(_renderer.get(), _config->window_config.width,
+                           _config->window_config.height,
+                           _config->window_config.tile_size,
+                           {255, 255, 255, 100});
+
+  for (auto &sprite : _sprites) {
+    sprite->render(_renderer.get());
+  }
+
+  if (_trainer) {
+    _trainer->render(_renderer.get());
+  }
+
+  SDL_RenderPresent(_renderer.get());
+}
+
 void Application::loop() {
   // same as run, for emscripten
   Application *app = Application::get();
@@ -116,34 +168,12 @@ void Application::loop() {
   // emscripten_set_main_loop_arg(loop, this, 0, 1);
 }
 
-void Application::render() {
-  SDL_SetRenderDrawColor(_renderer.get(), 0, 0, 0, 255);
-  SDL_RenderClear(_renderer.get());
-
-  for (auto &sprite : _sprites) {
-    sprite->render(_renderer.get());
-  }
-
-  SDL_RenderPresent(_renderer.get());
-}
-
-void Application::update() {
-  uint32_t current_frame_ticks = SDL_GetTicks();
-  _delta_time = (current_frame_ticks - _last_frame_ticks); // in ms
-  _last_frame_ticks = current_frame_ticks;
-
-  // update instances
-  // _map->update(_delta_time);
-
-  // update sprites
-  for (auto &sprite : _sprites) {
-    sprite->update(_delta_time);
-  }
-}
-
 void Application::handle_events() {
   SDL_Event event;
   while (SDL_PollEvent(&event)) {
+
+    InputManager::get()->handle_events(event);
+
     switch (event.type) {
     case SDL_QUIT:
       _is_running = false;
@@ -156,8 +186,6 @@ void Application::handle_events() {
     default:
       break;
     }
-
-    InputManager::get()->handle_events(event);
   }
 }
 
