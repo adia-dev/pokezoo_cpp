@@ -1,6 +1,7 @@
 #pragma once
 
 #include <config/config.h>
+#include <config/enums.h>
 #include <structs/my_vector.h>
 #include <utils/uuid.h>
 
@@ -15,6 +16,8 @@ public:
 
   void render(SDL_Renderer *renderer);
   void update(float delta_time);
+
+  void set_direction(Direction direction) { _direction = direction; }
 
   void set_position(int x, int y) {
     _dest_rect.x = x;
@@ -76,6 +79,7 @@ public:
 
 private:
   std::string _id;
+  Direction _direction = Direction::DOWN;
   SDL_Texture *_texture = nullptr;
   SDL_Rect _src_rect;
   SDL_Rect _dest_rect;

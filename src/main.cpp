@@ -1,3 +1,4 @@
+#include <animation/animation_controller.h>
 #include <application/application.h>
 
 int main() {
@@ -7,5 +8,6 @@ int main() {
     LoggerManager::log_fatal(e.what());
     return EXIT_FAILURE;
   }
+
   return 0;
 }
