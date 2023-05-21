@@ -2,7 +2,7 @@
 #include <managers/logger/logger_manager.h>
 
 AnimationController::AnimationController()
-    : _current_frame_index(0), _current_frame_count(0) {}
+    : _current_frame_index(0), _timer(0) {}
 
 void AnimationController::add_animation(const std::string &name,
                                         const Animation &animation) {
@@ -16,7 +16,7 @@ void AnimationController::play_animation(const std::string &name) {
 
   _current_animation = name;
   _current_frame_index = 0;
-  _current_frame_count = 0;
+  _timer = 0;
 }
 
 Frame AnimationController::get_current_frame() const {
@@ -31,13 +31,14 @@ void AnimationController::update(float delta_time) {
   }
 
   const Animation &animation = _animations.at(_current_animation);
-  _current_frame_count += delta_time;
+  _timer += delta_time;
 
-  if (_current_frame_count >= animation.frames[_current_frame_index].duration) {
-    _current_frame_count = 0;
+  if (_timer >= animation.frames[_current_frame_index].duration) {
+    _timer = 0;
     _current_frame_index++;
 
-    if (animation.frames[_current_frame_index].callback != nullptr) {
+    if (_current_frame_index < animation.frames.size() &&
+        animation.frames[_current_frame_index].callback != nullptr) {
       animation.frames[_current_frame_index].callback();
     }
 

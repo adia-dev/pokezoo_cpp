@@ -81,8 +81,20 @@ void Application::init() {
 void Application::init_sprites() {
   LoggerManager::log_info("Initializing sprites");
 
-  _sprites.push_back(
-      std::make_unique<Sprite>("pokemons_4th_gen.png", 0, 0, 32, 32));
+  Sprite new_sprite("pokemons_4th_gen.png", 0, 0, 32, 32);
+  AnimationController animation_controller;
+  Animation idle_up("idle_up");
+  idle_up.add_frame(Frame({0, 0, 32, 32}, 100));
+  idle_up.add_frame(Frame({32, 0, 32, 32}, 100));
+  idle_up.add_frame(Frame({64, 0, 32, 32}, 100));
+  idle_up.add_frame(Frame({96, 0, 32, 32}, 100));
+
+  animation_controller.add_animation("idle_up", idle_up);
+  animation_controller.play_animation("idle_up");
+
+  new_sprite.attach_animation_controller(animation_controller);
+
+  _sprites.push_back(std::make_unique<Sprite>(new_sprite));
 
   LoggerManager::log_info("Initializing sprites done");
 }
@@ -117,7 +129,7 @@ void Application::render() {
 
 void Application::update() {
   uint32_t current_frame_ticks = SDL_GetTicks();
-  _delta_time = (current_frame_ticks - _last_frame_ticks) / 1000.0;
+  _delta_time = (current_frame_ticks - _last_frame_ticks); // in ms
   _last_frame_ticks = current_frame_ticks;
 
   // update instances

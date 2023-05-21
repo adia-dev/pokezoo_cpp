@@ -1,5 +1,6 @@
 #pragma once
 
+#include <animation/animation_controller.h>
 #include <core/config.h>
 #include <core/enums.h>
 #include <structs/my_vector.h>
@@ -54,6 +55,13 @@ public:
 
   const std::string &get_id() const { return _id; }
 
+  AnimationController &get_animation_controller() {
+    return _animation_controller;
+  }
+  void attach_animation_controller(AnimationController &animation_controller) {
+    _animation_controller = animation_controller;
+  }
+
   friend std::ostream &operator<<(std::ostream &os, const Sprite &sprite) {
     // print the class like a json object, deconstruct the rects
     // pretty print it with correct spacing
@@ -80,6 +88,7 @@ public:
 private:
   std::string _id;
   Direction _direction = Direction::DOWN;
+  AnimationController _animation_controller;
   SDL_Texture *_texture = nullptr;
   SDL_Rect _src_rect;
   SDL_Rect _dest_rect;

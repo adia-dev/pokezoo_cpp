@@ -10,7 +10,7 @@ struct Frame {
   bool flipped;
 
   // optional callback function
-  std::function<void()> callback;
+  std::function<void()> callback = nullptr;
 
   Frame()
       : rect({0, 0, 0, 0}), duration(0), flipped(false), callback(nullptr) {}
