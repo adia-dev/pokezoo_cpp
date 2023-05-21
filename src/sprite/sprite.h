@@ -1,7 +1,7 @@
 #pragma once
 
-#include <config/config.h>
-#include <config/enums.h>
+#include <core/config.h>
+#include <core/enums.h>
 #include <structs/my_vector.h>
 #include <utils/uuid.h>
 

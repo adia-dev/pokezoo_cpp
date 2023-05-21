@@ -1,6 +1,6 @@
 #pragma once
 
-#include <config/config.h>
+#include <core/config.h>
 #include <managers/logger/logger_manager.h>
 
 enum LayerType { TILE_LAYER, OBJECT_LAYER, OBSTACLE_LAYER };

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "animation.h"
-#include <config/config.h>
+#include <core/config.h>
 
 class AnimationController {
 public:

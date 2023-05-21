@@ -1,6 +1,6 @@
 #pragma once
 
-#include <config/config.h>
+#include <core/config.h>
 #include <curl/curl.h>
 #include <managers/logger/logger_manager.h>
 

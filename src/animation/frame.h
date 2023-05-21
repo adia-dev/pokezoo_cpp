@@ -1,6 +1,6 @@
 #pragma once
 
-#include <config/config.h>
+#include <core/config.h>
 #include <functional>
 
 // struct for animation frame

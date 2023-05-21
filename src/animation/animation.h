@@ -1,8 +1,8 @@
 #pragma once
 
 #include "frame.h"
-#include <config/config.h>
-#include <config/enums.h>
+#include <core/config.h>
+#include <core/enums.h>
 #include <functional>
 
 struct Animation {
