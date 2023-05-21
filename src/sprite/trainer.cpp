@@ -50,13 +50,6 @@ void Trainer::update(double delta_time) {
 
   _animation_controller.play_animation(animation_name);
 
-  // system("clear");
-  // std::cout << *InputManager::get() << std::endl;
-  // std::cout << "Directional input: " << directional_input << std::endl;
-  // std::cout << "Direction: " << EnumsUtils::direction_to_string(direction)
-  //           << std::endl;
-  // std::cout << "Animation name: " << animation_name << std::endl;
-
   _dest_rect.x += directional_input.x * _speed * delta_time;
   _dest_rect.y += directional_input.y * _speed * delta_time;
 

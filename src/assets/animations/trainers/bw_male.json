@@ -1,0 +1,516 @@
+{
+    "animations": [
+        {
+            "name": "idle_up",
+            "direction": "LOOP",
+            "frames": [
+                {
+                    "rect": {
+                        "x": 0,
+                        "y": 0,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 1,
+                    "flipped": false
+                }
+            ],
+            "next_animation": null
+        },
+        {
+            "name": "idle_down",
+            "direction": "LOOP",
+            "frames": [
+                {
+                    "rect": {
+                        "x": 0,
+                        "y": 32,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 1,
+                    "flipped": false
+                }
+            ],
+            "next_animation": null
+        },
+        {
+            "name": "idle_left",
+            "direction": "LOOP",
+            "frames": [
+                {
+                    "rect": {
+                        "x": 0,
+                        "y": 64,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 1,
+                    "flipped": false
+                }
+            ],
+            "next_animation": null
+        },
+        {
+            "name": "idle_right",
+            "direction": "LOOP",
+            "frames": [
+                {
+                    "rect": {
+                        "x": 0,
+                        "y": 96,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 1,
+                    "flipped": false
+                }
+            ],
+            "next_animation": null
+        },
+        {
+            "name": "walk_up",
+            "direction": "LOOP",
+            "frames": [
+                {
+                    "rect": {
+                        "x": 32,
+                        "y": 0,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 100,
+                    "flipped": false
+                },
+                {
+                    "rect": {
+                        "x": 0,
+                        "y": 0,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 100,
+                    "flipped": false
+                },
+                {
+                    "rect": {
+                        "x": 64,
+                        "y": 0,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 100,
+                    "flipped": false
+                },
+                {
+                    "rect": {
+                        "x": 0,
+                        "y": 0,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 100,
+                    "flipped": false
+                }
+            ],
+            "next_animation": null
+        },
+        {
+            "name": "walk_down",
+            "direction": "LOOP",
+            "frames": [
+                {
+                    "rect": {
+                        "x": 32,
+                        "y": 32,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 100,
+                    "flipped": false
+                },
+                {
+                    "rect": {
+                        "x": 0,
+                        "y": 32,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 100,
+                    "flipped": false
+                },
+                {
+                    "rect": {
+                        "x": 64,
+                        "y": 32,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 100,
+                    "flipped": false
+                },
+                {
+                    "rect": {
+                        "x": 0,
+                        "y": 32,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 100,
+                    "flipped": false
+                }
+            ],
+            "next_animation": null
+        },
+        {
+            "name": "walk_left",
+            "direction": "LOOP",
+            "frames": [
+                {
+                    "rect": {
+                        "x": 32,
+                        "y": 64,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 100,
+                    "flipped": false
+                },
+                {
+                    "rect": {
+                        "x": 0,
+                        "y": 64,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 100,
+                    "flipped": false
+                },
+                {
+                    "rect": {
+                        "x": 64,
+                        "y": 64,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 100,
+                    "flipped": false
+                },
+                {
+                    "rect": {
+                        "x": 0,
+                        "y": 64,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 100,
+                    "flipped": false
+                }
+            ],
+            "next_animation": null
+        },
+        {
+            "name": "walk_right",
+            "direction": "LOOP",
+            "frames": [
+                {
+                    "rect": {
+                        "x": 32,
+                        "y": 96,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 100,
+                    "flipped": false
+                },
+                {
+                    "rect": {
+                        "x": 0,
+                        "y": 96,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 100,
+                    "flipped": false
+                },
+                {
+                    "rect": {
+                        "x": 64,
+                        "y": 96,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 100,
+                    "flipped": false
+                },
+                {
+                    "rect": {
+                        "x": 0,
+                        "y": 96,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 100,
+                    "flipped": false
+                }
+            ],
+            "next_animation": null
+        },
+        {
+            "name": "bike_idle_up",
+            "direction": "LOOP",
+            "frames": [
+                {
+                    "rect": {
+                        "x": 448,
+                        "y": 0,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 1,
+                    "flipped": false
+                }
+            ],
+            "next_animation": null
+        },
+        {
+            "name": "bike_idle_down",
+            "direction": "LOOP",
+            "frames": [
+                {
+                    "rect": {
+                        "x": 480,
+                        "y": 0,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 1,
+                    "flipped": false
+                }
+            ],
+            "next_animation": null
+        },
+        {
+            "name": "bike_idle_left",
+            "direction": "LOOP",
+            "frames": [
+                {
+                    "rect": {
+                        "x": 512,
+                        "y": 0,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 1,
+                    "flipped": false
+                }
+            ],
+            "next_animation": null
+        },
+        {
+            "name": "bike_idle_right",
+            "direction": "LOOP",
+            "frames": [
+                {
+                    "rect": {
+                        "x": 544,
+                        "y": 0,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 1,
+                    "flipped": false
+                }
+            ],
+            "next_animation": null
+        },
+        {
+            "name": "bike_up",
+            "direction": "LOOP",
+            "frames": [
+                {
+                    "rect": {
+                        "x": 372,
+                        "y": 0,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 100,
+                    "flipped": false
+                },
+                {
+                    "rect": {
+                        "x": 340,
+                        "y": 0,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 100,
+                    "flipped": false
+                },
+                {
+                    "rect": {
+                        "x": 404,
+                        "y": 0,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 100,
+                    "flipped": false
+                },
+                {
+                    "rect": {
+                        "x": 340,
+                        "y": 0,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 100,
+                    "flipped": false
+                }
+            ],
+            "next_animation": null
+        },
+        {
+            "name": "bike_down",
+            "direction": "LOOP",
+            "frames": [
+                {
+                    "rect": {
+                        "x": 372,
+                        "y": 32,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 100,
+                    "flipped": false
+                },
+                {
+                    "rect": {
+                        "x": 340,
+                        "y": 32,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 100,
+                    "flipped": false
+                },
+                {
+                    "rect": {
+                        "x": 404,
+                        "y": 32,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 100,
+                    "flipped": false
+                },
+                {
+                    "rect": {
+                        "x": 340,
+                        "y": 32,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 100,
+                    "flipped": false
+                }
+            ],
+            "next_animation": null
+        },
+        {
+            "name": "bike_left",
+            "direction": "LOOP",
+            "frames": [
+                {
+                    "rect": {
+                        "x": 372,
+                        "y": 64,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 100,
+                    "flipped": false
+                },
+                {
+                    "rect": {
+                        "x": 340,
+                        "y": 64,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 100,
+                    "flipped": false
+                },
+                {
+                    "rect": {
+                        "x": 404,
+                        "y": 64,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 100,
+                    "flipped": false
+                },
+                {
+                    "rect": {
+                        "x": 340,
+                        "y": 64,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 100,
+                    "flipped": false
+                }
+            ],
+            "next_animation": null
+        },
+        {
+            "name": "bike_right",
+            "direction": "LOOP",
+            "frames": [
+                {
+                    "rect": {
+                        "x": 372,
+                        "y": 96,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 100,
+                    "flipped": false
+                },
+                {
+                    "rect": {
+                        "x": 340,
+                        "y": 96,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 100,
+                    "flipped": false
+                },
+                {
+                    "rect": {
+                        "x": 404,
+                        "y": 96,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 100,
+                    "flipped": false
+                },
+                {
+                    "rect": {
+                        "x": 340,
+                        "y": 96,
+                        "width": 32,
+                        "height": 32
+                    },
+                    "duration": 100,
+                    "flipped": false
+                }
+            ],
+            "next_animation": null
+        }
+    ]
+}

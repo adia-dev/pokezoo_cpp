@@ -1,4 +1,5 @@
 #include "application.h"
+#include <animation/serializer.h>
 #include <managers/input/input_manager.h>
 #include <utils/render_utils.h>
 
@@ -84,10 +85,14 @@ void Application::init() {
 void Application::init_trainer() {
   LoggerManager::log_info("Initializing trainer");
 
-  Trainer trainer("pokemons_4th_gen.png", 0, 0, 32, 32);
+  Trainer trainer("bw_characters.png", 0, 0, 32, 32);
   trainer.set_name("Ash");
 
   _trainer = std::make_unique<Trainer>(trainer);
+  AnimationSerializer::load_animations(
+      _trainer->get_animation_controller(),
+      "/Users/abdoulayedia/Projects/Dev/C++/pokezoo/src/assets/animations/"
+      "trainers/bw_male.json");
 
   LoggerManager::log_info("Initializing trainer done");
 }
