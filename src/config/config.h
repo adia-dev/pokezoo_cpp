@@ -14,9 +14,15 @@
 #include <iostream>
 #include <map>
 #include <memory>
+#include <queue>
+#include <set>
 #include <sstream>
+#include <stack>
 #include <string>
 #include <structs/my_symver.h>
+#include <unordered_map>
+#include <unordered_set>
+#include <utility>
 #include <vector>
 
 #define DEFAULT_WINDOW_WIDTH 640
