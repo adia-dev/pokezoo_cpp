@@ -73,7 +73,18 @@ void Application::init() {
   _is_running = true;
   _last_frame_ticks = SDL_GetTicks();
 
+  init_sprites();
+
   LoggerManager::log_info("Application initialized");
+}
+
+void Application::init_sprites() {
+  LoggerManager::log_info("Initializing sprites");
+
+  _sprites.push_back(
+      std::make_unique<Sprite>("pokemons_4th_gen.png", 0, 0, 32, 32));
+
+  LoggerManager::log_info("Initializing sprites done");
 }
 
 void Application::loop() {
@@ -97,10 +108,9 @@ void Application::render() {
   SDL_SetRenderDrawColor(_renderer.get(), 0, 0, 0, 255);
   SDL_RenderClear(_renderer.get());
 
-  RenderUtils::render_texture(
-      _renderer.get(),
-      AssetManager::get_texture("pokemons_4th_gen.png", _renderer.get()),
-      {0, 0, 32, 32}, {0, 0, 32, 32});
+  for (auto &sprite : _sprites) {
+    sprite->render(_renderer.get());
+  }
 
   SDL_RenderPresent(_renderer.get());
 }
@@ -109,6 +119,14 @@ void Application::update() {
   uint32_t current_frame_ticks = SDL_GetTicks();
   _delta_time = (current_frame_ticks - _last_frame_ticks) / 1000.0;
   _last_frame_ticks = current_frame_ticks;
+
+  // update instances
+  // _map->update(_delta_time);
+
+  // update sprites
+  for (auto &sprite : _sprites) {
+    sprite->update(_delta_time);
+  }
 }
 
 void Application::handle_events() {

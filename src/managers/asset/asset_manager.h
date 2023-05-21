@@ -15,8 +15,9 @@ public:
 
   void clean();
 
-  static SDL_Texture *get_texture(const char *name, SDL_Renderer *renderer);
-  static TTF_Font *get_font(const char *name, int size, SDL_Renderer *renderer);
+  static SDL_Texture *get_texture(const char *name,
+                                  SDL_Renderer *renderer = nullptr);
+  static TTF_Font *get_font(const char *name, int size);
 
   friend std::ostream &operator<<(std::ostream &os, const AssetManager &am) {
     // print in a json like fashion

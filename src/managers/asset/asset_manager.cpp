@@ -1,4 +1,5 @@
 #include "asset_manager.h"
+#include <application/application.h>
 
 void AssetManager::clean() {
   for (auto &[name, texture] : _textures) {
@@ -35,6 +36,9 @@ SDL_Texture *AssetManager::get_texture(const char *name,
     exit(EXIT_FAILURE);
   }
 
+  if (renderer == nullptr) {
+    renderer = Application::get()->get_renderer();
+  }
   SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
 
   if (texture == nullptr) {
@@ -51,8 +55,7 @@ SDL_Texture *AssetManager::get_texture(const char *name,
   return texture;
 }
 
-TTF_Font *AssetManager::get_font(const char *name, int size,
-                                 SDL_Renderer *renderer) {
+TTF_Font *AssetManager::get_font(const char *name, int size) {
   auto &manager = *AssetManager::get();
   auto &fonts = manager._fonts;
 
