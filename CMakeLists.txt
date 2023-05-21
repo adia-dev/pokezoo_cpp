@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Include the settings shared across the different platforms available
-include(cmake/StaticAnalyzers.cmake)
+# include(cmake/StaticAnalyzers.cmake)
 
 # SDL2
 find_package(SDL2 REQUIRED)
