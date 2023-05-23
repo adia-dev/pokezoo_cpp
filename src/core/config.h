@@ -30,7 +30,9 @@
 
 #define DEFAULT_WINDOW_WIDTH 960
 #define DEFAULT_WINDOW_HEIGHT 540
-#define DEFAULT_WINDOW_FLAGS SDL_WINDOW_SHOWN
+#define DEFAULT_WINDOW_FLAGS                                                   \
+  SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI |         \
+      SDL_WINDOW_OPENGL
 
 #define DEFAULT_TILE_SIZE 16
 
@@ -42,6 +44,7 @@ struct WindowConfig {
   const char *title;
   int width;
   int height;
+  Vector2f scale = {1.0f, 1.0f};
   int tile_size = DEFAULT_TILE_SIZE;
   uint16_t max_fps = 120;
   uint32_t flags;

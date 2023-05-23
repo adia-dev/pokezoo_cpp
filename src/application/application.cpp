@@ -76,6 +76,7 @@ void Application::init() {
   _is_running = true;
   _last_frame_ticks = SDL_GetTicks();
 
+  adjust_window_scale();
   init_trainer();
   init_sprites();
 
@@ -118,6 +119,30 @@ void Application::init_sprites() {
   LoggerManager::log_info("Initializing sprites done");
 }
 
+void Application::adjust_window_scale() {
+  // Adjust the scale of the window because of HiDPI
+  SDL_GetRendererOutputSize(_renderer.get(), &_config->window_config.width,
+                            &_config->window_config.height);
+  if (_config->window_config.width != DEFAULT_WINDOW_WIDTH ||
+      _config->window_config.height != DEFAULT_WINDOW_HEIGHT) {
+    float width_scale =
+        (float)_config->window_config.width / (float)DEFAULT_WINDOW_WIDTH;
+    float height_scale =
+        (float)_config->window_config.height / (float)DEFAULT_WINDOW_HEIGHT;
+
+    if (width_scale != height_scale) {
+      LoggerManager::log_warning(
+          "Window scale is not uniform. This may cause issues.");
+    }
+
+    SDL_RenderSetScale(_renderer.get(), width_scale, height_scale);
+    _config->window_config.scale = {width_scale, height_scale};
+    LoggerManager::log_warning("Window scale set to " +
+                               std::to_string(width_scale) + "x" +
+                               std::to_string(height_scale));
+  }
+}
+
 void Application::update() {
   uint32_t current_frame_ticks = SDL_GetTicks();
   int fps = 1000 / (current_frame_ticks - _last_frame_ticks);
@@ -147,8 +172,9 @@ void Application::render() {
   SDL_Texture *map_texture =
       AssetManager::get_texture("zoo.png", AssetDirectory::MAPS);
   // the map is the full size of the texture
-  SDL_Rect map_rect = {0, 0, _config->window_config.width,
-                       _config->window_config.height};
+  SDL_Rect map_rect = {
+      0, 0, _config->window_config.width / (int)_config->window_config.scale.x,
+      _config->window_config.height / (int)_config->window_config.scale.y};
   SDL_RenderCopy(_renderer.get(), map_texture, nullptr, &map_rect);
 
   RenderUtils::render_grid(_renderer.get(), _config->window_config.width,
@@ -206,6 +232,12 @@ void Application::handle_events() {
     case SDL_KEYDOWN:
       if (event.key.keysym.sym == SDLK_ESCAPE) {
         _is_running = false;
+      }
+      break;
+      // handle window resize
+    case SDL_WINDOWEVENT:
+      if (event.window.event == SDL_WINDOWEVENT_RESIZED) {
+        adjust_window_scale();
       }
       break;
     default:

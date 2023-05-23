@@ -41,6 +41,8 @@ private:
   void init_trainer();
   void init_sprites();
 
+  void adjust_window_scale();
+
   void loop();
   void render();
   void update();
