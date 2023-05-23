@@ -108,4 +108,35 @@ void render_grid(SDL_Renderer *renderer, int width, int height, int tile_size,
   SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 }
 
+void render_rect(SDL_Renderer *renderer, SDL_Rect rect,
+                 const SDL_Color &color) {
+  if (renderer == nullptr) {
+    LoggerManager::log_fatal("SDL_Renderer is null");
+    exit(EXIT_FAILURE);
+  }
+
+  SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
+  SDL_RenderDrawRect(renderer, &rect);
+  SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+}
+
+void render_square(SDL_Renderer *renderer, const Vector2i &position, int size,
+                   const SDL_Color &color) {
+  if (renderer == nullptr) {
+    LoggerManager::log_fatal("SDL_Renderer is null");
+    exit(EXIT_FAILURE);
+  }
+
+  SDL_Rect rect;
+
+  rect.x = position.x;
+  rect.y = position.y;
+  rect.w = size;
+  rect.h = size;
+
+  SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
+  SDL_RenderFillRect(renderer, &rect);
+  SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+}
+
 } // namespace RenderUtils

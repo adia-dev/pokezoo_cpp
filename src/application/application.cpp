@@ -157,6 +157,11 @@ void Application::render() {
     _trainer->render(_renderer.get());
   }
 
+  Vector2i mouse_coords = InputManager::get_mouse_position() / 32;
+  RenderUtils::render_rect(_renderer.get(),
+                           {mouse_coords.x * 32, mouse_coords.y * 32, 32, 32},
+                           {255, 0, 0, 100});
+
   SDL_RenderPresent(_renderer.get());
 }
 

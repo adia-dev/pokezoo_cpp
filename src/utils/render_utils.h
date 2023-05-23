@@ -1,6 +1,7 @@
 #pragma once
 
 #include <core/config.h>
+#include <structs/my_vector.h>
 
 namespace RenderUtils {
 
@@ -13,4 +14,8 @@ void render_text(SDL_Renderer *renderer, TTF_Font *font, const char *text,
 void render_grid(SDL_Renderer *renderer, int width, int height, int tile_size,
                  const SDL_Color &color = {255, 255, 255, 255});
 
+void render_rect(SDL_Renderer *renderer, SDL_Rect rect,
+                 const SDL_Color &color = {255, 255, 255, 255});
+void render_square(SDL_Renderer *renderer, const Vector2i &position, int size,
+                   const SDL_Color &color = {255, 255, 255, 255});
 } // namespace RenderUtils
