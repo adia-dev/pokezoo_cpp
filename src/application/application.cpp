@@ -90,10 +90,9 @@ void Application::init_trainer() {
   trainer.set_name("Ash");
 
   _trainer = std::make_unique<Trainer>(trainer);
-  AnimationSerializer::load_animations(
-      _trainer->get_animation_controller(),
-      "/Users/abdoulayedia/Projects/Dev/C++/pokezoo/src/assets/animations/"
-      "trainers/bw_male.json");
+  AnimationSerializer::load_animations(_trainer->get_animation_controller(),
+                                       "../src/assets/animations/"
+                                       "trainers/bw_male.json");
 
   LoggerManager::log_info("Initializing trainer done");
 }
