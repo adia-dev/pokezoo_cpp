@@ -15,7 +15,9 @@ void render_grid(SDL_Renderer *renderer, int width, int height, int tile_size,
                  const SDL_Color &color = {255, 255, 255, 255});
 
 void render_rect(SDL_Renderer *renderer, SDL_Rect rect,
-                 const SDL_Color &color = {255, 255, 255, 255});
+                 const SDL_Color &color = {255, 255, 255, 255},
+                 bool fill = true);
 void render_square(SDL_Renderer *renderer, const Vector2i &position, int size,
-                   const SDL_Color &color = {255, 255, 255, 255});
+                   const SDL_Color &color = {255, 255, 255, 255},
+                   bool fill = true);
 } // namespace RenderUtils
