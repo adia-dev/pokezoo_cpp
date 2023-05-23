@@ -144,6 +144,13 @@ void Application::render() {
   SDL_SetRenderDrawColor(_renderer.get(), 0, 0, 0, 255);
   SDL_RenderClear(_renderer.get());
 
+  SDL_Texture *map_texture =
+      AssetManager::get_texture("zoo.png", AssetDirectory::MAPS);
+  // the map is the full size of the texture
+  SDL_Rect map_rect = {0, 0, _config->window_config.width,
+                       _config->window_config.height};
+  SDL_RenderCopy(_renderer.get(), map_texture, nullptr, &map_rect);
+
   RenderUtils::render_grid(_renderer.get(), _config->window_config.width,
                            _config->window_config.height,
                            _config->window_config.tile_size,
@@ -157,9 +164,13 @@ void Application::render() {
     _trainer->render(_renderer.get());
   }
 
-  Vector2i mouse_coords = InputManager::get_mouse_position() / 32;
+  Vector2i mouse_coords =
+      InputManager::get_mouse_position() / _config->window_config.tile_size;
   RenderUtils::render_rect(_renderer.get(),
-                           {mouse_coords.x * 32, mouse_coords.y * 32, 32, 32},
+                           {mouse_coords.x * _config->window_config.tile_size,
+                            mouse_coords.y * _config->window_config.tile_size,
+                            _config->window_config.tile_size,
+                            _config->window_config.tile_size},
                            {255, 0, 0, 100});
 
   SDL_RenderPresent(_renderer.get());

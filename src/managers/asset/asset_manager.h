@@ -1,6 +1,7 @@
 #pragma once
 
 #include <core/config.h>
+#include <core/enums.h>
 
 class AssetManager {
 public:
@@ -15,8 +16,10 @@ public:
 
   void clean();
 
-  static SDL_Texture *get_texture(const char *name,
-                                  SDL_Renderer *renderer = nullptr);
+  static SDL_Texture *
+  get_texture(const char *name,
+              AssetDirectory directory = AssetDirectory::TEXTURES,
+              SDL_Renderer *renderer = nullptr);
   static TTF_Font *get_font(const char *name, int size);
 
   friend std::ostream &operator<<(std::ostream &os, const AssetManager &am) {

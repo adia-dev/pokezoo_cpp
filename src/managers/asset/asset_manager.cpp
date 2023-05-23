@@ -15,6 +15,7 @@ void AssetManager::clean() {
 }
 
 SDL_Texture *AssetManager::get_texture(const char *name,
+                                       AssetDirectory directory,
                                        SDL_Renderer *renderer) {
   auto &manager = *AssetManager::get();
   auto &textures = manager._textures;
@@ -25,7 +26,8 @@ SDL_Texture *AssetManager::get_texture(const char *name,
     return it->second;
   }
 
-  std::string path = ApplicationConfig::texture_path + name;
+  std::string path =
+      ApplicationConfig::get_asset_path(directory).data() + std::string(name);
 
   SDL_Surface *surface = IMG_Load(path.c_str());
 

@@ -20,16 +20,19 @@
 #include <stack>
 #include <string>
 #include <structs/my_symver.h>
+#include <structs/my_vector.h>
 #include <unordered_map>
 #include <unordered_set>
 #include <utility>
 #include <vector>
 
-#define DEFAULT_WINDOW_WIDTH 640
-#define DEFAULT_WINDOW_HEIGHT 480
+#include "enums.h"
+
+#define DEFAULT_WINDOW_WIDTH 960
+#define DEFAULT_WINDOW_HEIGHT 540
 #define DEFAULT_WINDOW_FLAGS SDL_WINDOW_SHOWN
 
-#define DEFAULT_TILE_SIZE 32
+#define DEFAULT_TILE_SIZE 16
 
 struct WindowConfig {
 
@@ -52,8 +55,27 @@ struct ApplicationConfig {
   WindowConfig window_config;
   Version version = {0, 0, 1};
 
-  inline static std::string font_path = "../src/assets/fonts/arial.ttf";
-  inline static std::string map_path = "../src/assets/maps/map1.json";
+  inline static std::string font_path = "../src/assets/fonts/";
+  inline static std::string map_path = "../src/assets/maps/";
   inline static std::string texture_path = "../src/assets/textures/";
   inline static std::string tileset_path = "../src/assets/tilesets/";
+  inline static std::string animation_path = "../src/assets/animations/";
+  inline static std::string audio_path = "../src/assets/audios/";
+
+  static std::string_view get_asset_path(AssetDirectory dir) {
+    switch (dir) {
+    case AssetDirectory::TEXTURES:
+      return texture_path;
+    case AssetDirectory::FONTS:
+      return font_path;
+    case AssetDirectory::MAPS:
+      return map_path;
+    case AssetDirectory::ANIMATIONS:
+      return animation_path;
+    case AssetDirectory::AUDIO:
+      return audio_path;
+    default:
+      return "";
+    }
+  }
 };

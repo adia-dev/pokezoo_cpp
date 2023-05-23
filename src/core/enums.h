@@ -12,3 +12,6 @@ enum class SupportedSerializer { JSON, XML, COUNT };
 // MAP
 enum LayerType { TILE_LAYER, OBJECT_LAYER, OBSTACLE_LAYER };
 enum class TileType { NONE, FLOOR, WALL, COUNT };
+
+// ASSET MANAGER
+enum class AssetDirectory { TEXTURES, FONTS, MAPS, ANIMATIONS, AUDIO, COUNT };
