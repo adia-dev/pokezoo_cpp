@@ -15,8 +15,8 @@ public:
 
 private:
   std::string _name;
-  float _walk_speed = 300;
-  float _run_speed = 500;
+  float _walk_speed = 200;
+  float _run_speed = 300;
   float _speed = _walk_speed;
   float _desired_speed = _walk_speed;
   bool _is_running = false;
