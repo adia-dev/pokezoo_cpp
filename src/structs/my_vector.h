@@ -8,7 +8,19 @@ template <typename T> class Vector2 {
 public:
   Vector2() = default;
   Vector2(T x, T y) : x(x), y(y) {}
+  Vector2(const Vector2 &other) = default;
   ~Vector2() = default;
+
+  template <typename U> Vector2(const Vector2<U> &other) {
+    x = other.x;
+    y = other.y;
+  }
+
+  template <typename U> Vector2 &operator=(const Vector2<U> &other) {
+    x = other.x;
+    y = other.y;
+    return *this;
+  }
 
   T x = 0;
   T y = 0;
@@ -50,6 +62,18 @@ public:
   Vector2 &to_pixels(int tile_size) {
     x *= tile_size;
     y *= tile_size;
+    return *this;
+  }
+
+  Vector2 &normalized() {
+    T mag = magnitude();
+
+    if (mag == 0) {
+      return *this;
+    }
+
+    x /= mag;
+    y /= mag;
     return *this;
   }
 
@@ -97,16 +121,25 @@ public:
   static Vector2<T> unit() { return Vector2<T>(1, 1); }
 
   static Direction direction_from_vector(const Vector2<T> &v) {
-    if (v.x == 0 && v.y == -1) {
-      return Direction::UP;
-    } else if (v.x == 0 && v.y == 1) {
-      return Direction::DOWN;
-    } else if (v.x == -1 && v.y == 0) {
-      return Direction::LEFT;
-    } else if (v.x == 1 && v.y == 0) {
-      return Direction::RIGHT;
-    } else {
+    float x = v.x;
+    float y = v.y;
+
+    if (x == 0 && y == 0) {
       return Direction::NONE;
+    }
+
+    if (std::abs(x) > std::abs(y)) {
+      if (x > 0) {
+        return Direction::RIGHT;
+      } else {
+        return Direction::LEFT;
+      }
+    } else {
+      if (y > 0) {
+        return Direction::DOWN;
+      } else {
+        return Direction::UP;
+      }
     }
   }
 

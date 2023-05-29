@@ -13,6 +13,10 @@ public:
   void set_name(const std::string &name) { _name = name; }
   const std::string &get_name() const { return _name; }
 
+  void toggle_bike() { _riding_bike = !_riding_bike; }
+  void mount_bike() { _riding_bike = true; }
+  void dismount_bike() { _riding_bike = false; }
+
 private:
   std::string _name;
   float _walk_speed = 200;

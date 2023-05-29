@@ -24,10 +24,8 @@ animation_direction_to_string(AnimationDirection animation_direction) {
     return "REVERSE";
   case AnimationDirection::LOOP:
     return "LOOP";
-  case AnimationDirection::ONCE:
-    return "ONCE";
-  case AnimationDirection::PINGPONG:
-    return "PINGPONG";
+  case AnimationDirection::PING_PONG:
+    return "PING PONG";
   default:
     return "UNKNOWN";
   }

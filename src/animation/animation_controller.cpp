@@ -61,12 +61,7 @@ void AnimationController::update(double delta_time) {
         _current_frame_index = 0;
       }
       break;
-    case AnimationDirection::ONCE:
-      if (_current_frame_index >= animation.frames.size()) {
-        _current_frame_index = 0;
-      }
-      break;
-    case AnimationDirection::PINGPONG:
+    case AnimationDirection::PING_PONG:
       if (_current_frame_index >= animation.frames.size()) {
         _current_frame_index =
             animation.frames.size() - 1; // not working, useless anyway

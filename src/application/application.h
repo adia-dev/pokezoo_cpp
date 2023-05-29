@@ -45,10 +45,12 @@ private:
 
   void adjust_window_scale();
 
+  void on_frame_start();
   void loop();
   void render();
   void update();
   void handle_events();
+  void handle_input();
   void clean();
 
   std::unique_ptr<SDL_Window, decltype(&SDL_DestroyWindow)> _window = {

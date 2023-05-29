@@ -8,6 +8,7 @@ void Application::run() {
   app->init();
 
   while (app->_is_running) {
+    app->on_frame_start();
     app->handle_events();
     app->update();
     app->render();
@@ -215,8 +216,9 @@ void Application::render() {
     _trainer->render(_renderer.get());
   }
 
-  Vector2i mouse_coords =
-      InputManager::get_mouse_position() / _config->window_config.tile_size;
+  Vector2i mouse_coords = Vector2i(InputManager::get_mouse_position()) /
+                          _config->window_config.tile_size;
+
   RenderUtils::render_rect(_renderer.get(),
                            {mouse_coords.x * _config->window_config.tile_size,
                             mouse_coords.y * _config->window_config.tile_size,
@@ -239,6 +241,8 @@ void Application::render() {
   SDL_RenderPresent(_renderer.get());
 }
 
+void Application::on_frame_start() { InputManager::update_key_states(); }
+
 void Application::loop() {
   // same as run, for emscripten
   Application *app = Application::get();
@@ -247,6 +251,7 @@ void Application::loop() {
   // lambda for emscripten
   auto loop = [](void *app_ptr) -> int {
     Application *app = static_cast<Application *>(app_ptr);
+    app->on_frame_start();
     app->handle_events();
     app->update();
     app->render();
@@ -260,7 +265,7 @@ void Application::handle_events() {
   SDL_Event event;
   while (SDL_PollEvent(&event)) {
 
-    InputManager::get()->handle_events(event);
+    InputManager::handle_event(event);
 
     switch (event.type) {
     case SDL_QUIT:
@@ -282,6 +287,8 @@ void Application::handle_events() {
     }
   }
 }
+
+void Application::handle_input() {}
 
 void Application::clean() {
   SDL_Quit();

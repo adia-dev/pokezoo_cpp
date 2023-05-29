@@ -19,6 +19,10 @@ public:
   virtual void update(double delta_time);
 
   void set_direction(Direction direction) { _direction = direction; }
+  virtual void move(float x, float y) {
+    _dest_rect.x += x;
+    _dest_rect.y += y;
+  }
 
   void set_position(int x, int y) {
     _dest_rect.x = x;
