@@ -24,9 +24,10 @@ void Trainer::update(double delta_time) {
 
   _is_running = InputManager::is_key_down(SDLK_LSHIFT);
 
-  _desired_speed = _is_running ? _run_speed : _walk_speed;
+  _desired_speed = (_is_running ? _run_speed : _walk_speed) *
+                   InputManager::get_directional_input().magnitude();
 
-  _speed = MathUtils::lerp(_speed, _desired_speed, 0.1f);
+  _speed = MathUtils::lerp(_speed, _desired_speed, 0.01f);
 
   Vector2i directional_input = InputManager::get_directional_input();
   Direction direction = Vector2i::direction_from_vector(directional_input);

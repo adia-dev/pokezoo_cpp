@@ -46,7 +46,7 @@ struct WindowConfig {
   int height;
   Vector2f scale = {1.0f, 1.0f};
   int tile_size = DEFAULT_TILE_SIZE;
-  uint16_t max_fps = 120;
+  uint16_t max_fps = 240;
   uint32_t flags;
 };
 

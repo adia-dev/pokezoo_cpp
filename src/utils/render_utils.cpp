@@ -42,7 +42,7 @@ void render_texture(SDL_Renderer *renderer, SDL_Texture *texture,
 }
 
 void render_text(SDL_Renderer *renderer, TTF_Font *font, const char *text,
-                 SDL_Color color, int x, int y) {
+                 SDL_Color color, int x, int y, bool wrap) {
   if (renderer == nullptr) {
     LoggerManager::log_error("SDL_Renderer is null");
     std::cerr << "SDL_Renderer is null" << std::endl;
@@ -55,7 +55,12 @@ void render_text(SDL_Renderer *renderer, TTF_Font *font, const char *text,
     exit(EXIT_FAILURE);
   }
 
-  SDL_Surface *surface = TTF_RenderText_Solid(font, text, color);
+  SDL_Surface *surface = nullptr;
+  if (wrap) {
+    surface = TTF_RenderText_Blended_Wrapped(font, text, color, 200);
+  } else {
+    surface = TTF_RenderText_Solid(font, text, color);
+  }
 
   if (surface == nullptr) {
     LoggerManager::log_error("SDL_Surface is null");

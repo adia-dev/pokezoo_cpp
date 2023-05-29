@@ -71,14 +71,18 @@ Vector2i InputManager::get_directional_input() {
 
   if (manager->_keys[SDLK_z] || manager->_keys[SDLK_UP]) {
     direction.y = -1;
+    direction.x = 0;
   } else if (manager->_keys[SDLK_s] || manager->_keys[SDLK_DOWN]) {
     direction.y = 1;
+    direction.x = 0;
   }
 
   if (manager->_keys[SDLK_a] || manager->_keys[SDLK_LEFT]) {
     direction.x = -1;
+    direction.y = 0;
   } else if (manager->_keys[SDLK_d] || manager->_keys[SDLK_RIGHT]) {
     direction.x = 1;
+    direction.y = 0;
   }
 
   return direction;

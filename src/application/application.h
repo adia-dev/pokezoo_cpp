@@ -38,6 +38,8 @@ public:
 
 private:
   void init();
+  void init_map();
+  void init_fonts();
   void init_trainer();
   void init_sprites();
 
@@ -65,5 +67,6 @@ private:
   // states
   bool _is_running = false;
   double _delta_time = 0.0;
+  int _fps = 0;
   uint32_t _last_frame_ticks = 0;
 };

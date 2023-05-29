@@ -68,19 +68,30 @@ void Application::init() {
 
   LoggerManager::init();
 
-  // init instances
-  _map = std::make_unique<Map>();
-  _map->load("assets/maps/map1.json");
-
   // set initial state
   _is_running = true;
   _last_frame_ticks = SDL_GetTicks();
 
   adjust_window_scale();
+  init_map();
+  init_fonts();
   init_trainer();
   init_sprites();
 
   LoggerManager::log_info("Application initialized");
+}
+
+void Application::init_map() {
+  LoggerManager::log_info("Initializing map");
+  _map = std::make_unique<Map>();
+  _map->load("assets/maps/map1.json");
+  LoggerManager::log_info("Initializing map done");
+}
+
+void Application::init_fonts() {
+  LoggerManager::log_info("Initializing fonts");
+  AssetManager::get_font("Roboto/Roboto-Regular.ttf", 16);
+  LoggerManager::log_info("Initializing fonts done");
 }
 
 void Application::init_trainer() {
@@ -144,15 +155,17 @@ void Application::adjust_window_scale() {
 
 void Application::update() {
   uint32_t current_frame_ticks = SDL_GetTicks();
-  int fps = 1000 / (current_frame_ticks - _last_frame_ticks);
-  while (fps > Application::get_config()->window_config.max_fps) {
-    fps = 1000 / (SDL_GetTicks() - _last_frame_ticks);
+  _fps = 1000 / (current_frame_ticks - _last_frame_ticks);
+  while (_fps > Application::get_config()->window_config.max_fps) {
+    _fps = 1000 / (SDL_GetTicks() - _last_frame_ticks);
   }
   _delta_time = (current_frame_ticks - _last_frame_ticks) / 1000.0f;
   _last_frame_ticks = current_frame_ticks;
 
   // update instances
   // _map->update(_delta_time);
+
+  _delta_time = std::min(_delta_time, 0.016);
 
   if (_trainer) {
     _trainer->update(_delta_time);
@@ -197,6 +210,16 @@ void Application::render() {
                             _config->window_config.tile_size,
                             _config->window_config.tile_size},
                            {255, 0, 0, 100});
+
+  std::stringstream ss;
+  ss << "Mouse: " << mouse_coords << '\n';
+  ss << "FPS: " << std::to_string(_fps) << '\n';
+  ss << "Delta time: " << std::to_string(_delta_time) << '\n'
+     << "Keyboard Direction: " << InputManager::get_directional_input() << '\n';
+
+  RenderUtils::render_text(
+      _renderer.get(), AssetManager::get_font("Roboto/Roboto-Regular.ttf", 16),
+      ss.str().c_str(), {255, 255, 255, 255}, 0, 0, true);
 
   SDL_RenderPresent(_renderer.get());
 }
