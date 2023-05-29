@@ -157,6 +157,33 @@ void Application::init_sprites() {
 
   _sprites.push_back(std::make_unique<Sprite>(kyurem));
 
+  std::vector<std::string> pokemon_list = {
+      "kyurem",    "pikachu",   "keldeo",    "boreas",   "fulguris",
+      "demeteros", "cobaltium", "terrakium", "viridium", "victini",
+      "munna",     "musharna",  "ratentif",  "zorua"};
+
+  for (int i = 0; i < 1000; ++i) {
+    int x = rand() % 1000;
+    int y = rand() % 1000;
+    int pokemon_index = rand() % pokemon_list.size();
+
+    Sprite new_sprite("bw_overworld.png", x, y, 32, 32);
+    if (pokemon_list[pokemon_index] == "kyurem") {
+      new_sprite.set_size(128, 128);
+    }
+
+    AnimationController animation_controller;
+    AnimationSerializer::load_animations(
+        animation_controller,
+        "../src/assets/animations/pokemons/bw_overworld.json",
+        pokemon_list[pokemon_index]);
+    animation_controller.play_animation("idle_down");
+
+    new_sprite.attach_animation_controller(animation_controller);
+
+    _sprites.push_back(std::make_unique<Sprite>(new_sprite));
+  }
+
   LoggerManager::log_info("Initializing sprites done");
 }
 
@@ -164,12 +191,21 @@ void Application::adjust_window_scale() {
   // Adjust the scale of the window because of HiDPI
   SDL_GetRendererOutputSize(_renderer.get(), &_config->window_config.width,
                             &_config->window_config.height);
+
+  LoggerManager::log_warning(
+      "Window size: " + std::to_string(_config->window_config.width) + "x" +
+      std::to_string(_config->window_config.height));
+
+  LoggerManager::log_warning(
+      "Default window size: " + std::to_string(DEFAULT_WINDOW_WIDTH) + "x" +
+      std::to_string(DEFAULT_WINDOW_HEIGHT));
+
   if (_config->window_config.width != DEFAULT_WINDOW_WIDTH ||
       _config->window_config.height != DEFAULT_WINDOW_HEIGHT) {
     float width_scale =
-        (float)_config->window_config.width / (float)DEFAULT_WINDOW_WIDTH;
+        (float)_config->window_config.width / DEFAULT_WINDOW_WIDTH;
     float height_scale =
-        (float)_config->window_config.height / (float)DEFAULT_WINDOW_HEIGHT;
+        (float)_config->window_config.height / DEFAULT_WINDOW_HEIGHT;
 
     if (width_scale != height_scale) {
       LoggerManager::log_warning(
@@ -186,9 +222,9 @@ void Application::adjust_window_scale() {
 
 void Application::update() {
   uint32_t current_frame_ticks = SDL_GetTicks();
-  _fps = 1000 / std::min((current_frame_ticks - _last_frame_ticks), 10u);
+  _fps = 1000 / std::max((current_frame_ticks - _last_frame_ticks), 10u);
   while (_fps > Application::get_config()->window_config.max_fps) {
-    _fps = 1000 / std::min(SDL_GetTicks() - _last_frame_ticks, 10u);
+    _fps = 1000 / std::max(SDL_GetTicks() - _last_frame_ticks, 10u);
   }
   _delta_time = (current_frame_ticks - _last_frame_ticks) / 1000.0f;
   _last_frame_ticks = current_frame_ticks;
@@ -196,7 +232,7 @@ void Application::update() {
   // update instances
   // _map->update(_delta_time);
 
-  _delta_time = std::min(_delta_time, 0.016);
+  _delta_time = std::max(_delta_time, 0.0016);
 
   if (_trainer) {
     _trainer->update(_delta_time);
@@ -204,6 +240,17 @@ void Application::update() {
 
   // update sprites
   for (auto &sprite : _sprites) {
+
+    if (sprite->get_animation_controller().has_animation("walk_right")) {
+      sprite->get_animation_controller().play_animation("walk_right");
+      sprite->move(100 * _delta_time, 0);
+    }
+
+    if (sprite->get_dest_rect().x >
+        _config->window_config.width / _config->window_config.scale.x) {
+      sprite->set_position(0, sprite->get_dest_rect().y);
+    }
+
     sprite->update(_delta_time);
   }
 }
@@ -215,9 +262,16 @@ void Application::render() {
   SDL_Texture *map_texture =
       AssetManager::get_texture("zoo.png", AssetDirectory::MAPS);
   // the map is the full size of the texture
+
+  int map_width = _config->window_config.width / _config->window_config.scale.x;
+  int map_height =
+      _config->window_config.height / _config->window_config.scale.y;
   SDL_Rect map_rect = {
-      0, 0, _config->window_config.width / (int)_config->window_config.scale.x,
-      _config->window_config.height / (int)_config->window_config.scale.y};
+      0,
+      0,
+      map_width,
+      map_height,
+  };
   SDL_RenderCopy(_renderer.get(), map_texture, nullptr, &map_rect);
 
   RenderUtils::render_grid(_renderer.get(), _config->window_config.width,

@@ -59,6 +59,13 @@ public:
 
   const std::string &get_id() const { return _id; }
 
+  const SDL_Rect &get_src_rect() const { return _src_rect; }
+  const SDL_Rect &get_dest_rect() const { return _dest_rect; }
+
+  const Direction &get_direction() const { return _direction; }
+
+  const float &get_scale() const { return _scale; }
+
   AnimationController &get_animation_controller() {
     return _animation_controller;
   }

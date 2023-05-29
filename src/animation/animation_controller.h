@@ -20,6 +20,10 @@ public:
   void load_from_file(const std::string &file_path,
                       SupportedSerializer serializer);
 
+  bool has_animation(const std::string &name) const {
+    return _animations.find(name) != _animations.end();
+  }
+
   // getters and setters
   std::string get_current_animation() const { return _current_animation; }
 
