@@ -17,4 +17,8 @@ void load_animations(AnimationController &controller,
 void process_animation_json(const json &animation_json, Animation &animation);
 void process_frame_json(const json &frame_json, Frame &frame);
 
+void walk_preset(AnimationController &controller, const json &animation_json);
+void idle_down_preset(AnimationController &controller,
+                      const json &animation_json);
+
 } // namespace AnimationSerializer
