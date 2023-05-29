@@ -2,7 +2,8 @@
 #include <managers/logger/logger_manager.h>
 
 void AnimationSerializer::load_animations(AnimationController &controller,
-                                          const std::string &json_file_path) {
+                                          const std::string &json_file_path,
+                                          const std::string &key) {
   std::ifstream file(json_file_path);
   if (!file.is_open()) {
     LoggerManager::log_fatal("Could not open file " + json_file_path);
@@ -28,14 +29,21 @@ void AnimationSerializer::load_animations(AnimationController &controller,
     return;
   }
 
-  if (json_data.find("animations") == json_data.end()) {
+  if (key.empty() && json_data.find("animations") == json_data.end()) {
     // Handle missing "animations" key error
     LoggerManager::log_fatal("Could not parse JSON file " + json_file_path +
                              ": missing \"animations\" key");
     return;
+  } else if (!key.empty() && json_data.find(key) == json_data.end()) {
+    // Handle missing key error
+    LoggerManager::log_fatal("Could not parse JSON file " + json_file_path +
+                             ": missing \"" + key + "\" key");
+    return;
   }
 
-  const json &animations_json = json_data["animations"];
+  const json &animations_json =
+      key.empty() ? json_data["animations"] : json_data[key]["animations"];
+
   if (!animations_json.is_array()) {
     // Handle invalid "animations" value error
     LoggerManager::log_fatal("Could not parse JSON file " + json_file_path +
@@ -48,6 +56,63 @@ void AnimationSerializer::load_animations(AnimationController &controller,
       // Handle invalid animation JSON object error
       LoggerManager::log_warning("Could not parse JSON file " + json_file_path +
                                  ": invalid animation JSON object");
+      continue;
+    }
+
+    if (animation_json.find("preset") != animation_json.end() &&
+        animation_json["preset"].is_string()) {
+      if (animation_json["preset"] == "walk") {
+        std::vector<std::string> directions = {"up", "down", "left", "right"};
+        Vector2i start = {animation_json["start"]["x"],
+                          animation_json["start"]["y"]};
+        Vector2i size = {animation_json["size"]["width"],
+                         animation_json["size"]["height"]};
+        for (int i = 0; i < directions.size(); i++) {
+          Animation new_animation("walk_" + directions[i],
+                                  AnimationDirection::LOOP);
+          for (int j = 0; j < 3; j++) {
+
+            if (j == 0) {
+              Animation idle_animation("idle_" + directions[i],
+                                       AnimationDirection::LOOP);
+              Frame frame;
+              frame.rect = {start.x + j * size.x, start.y + i * size.y, size.x,
+                            size.y};
+              frame.duration = 100;
+              frame.flipped = false;
+              idle_animation.frames.push_back(frame);
+              controller.add_animation(idle_animation.name, idle_animation);
+            }
+
+            Frame frame;
+            frame.rect = {start.x + j * size.x, start.y + i * size.y, size.x,
+                          size.y};
+            frame.duration = 100;
+            frame.flipped = false;
+            new_animation.frames.push_back(frame);
+            controller.add_animation(new_animation.name, new_animation);
+          }
+        }
+      }
+
+      if (animation_json["preset"] == "idle_down") {
+        Vector2i start = {animation_json["start"]["x"],
+                          animation_json["start"]["y"]};
+        Vector2i size = {animation_json["size"]["width"],
+                         animation_json["size"]["height"]};
+        int count = animation_json["count"];
+        Animation new_animation("idle_down", AnimationDirection::LOOP);
+
+        Animation idle_animation("idle_down", AnimationDirection::LOOP);
+        for (int i = 0; i < count; ++i) {
+          Frame frame;
+          frame.rect = {start.x + i * size.x, start.y, size.x, size.y};
+          frame.duration = 100;
+          frame.flipped = false;
+          idle_animation.frames.push_back(frame);
+        }
+        controller.add_animation(idle_animation.name, idle_animation);
+      }
       continue;
     }
 

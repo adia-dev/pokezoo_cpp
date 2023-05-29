@@ -1,0 +1,91 @@
+{
+    "kyurem": {
+        "start": {
+            "x": 736,
+            "y": 1216
+        },
+        "count": "4x1",
+        "size": 64
+    },
+    "keldeo": {
+        "start": {
+            "x": 0,
+            "y": 1472
+        },
+        "count": "3x4",
+        "animation": "walk",
+        "size": 32
+    },
+    "pikachu": {
+        "start": {
+            "x": 64,
+            "y": 1216
+        },
+        "count": "3x4",
+        "animation": "walk",
+        "size": 32
+    },
+    "boreas": {
+        "start": {
+            "x": 160,
+            "y": 1216
+        },
+        "count": "3x1",
+        "animation": "idle_down",
+        "size": 32
+    },
+    "fulguris": {
+        "start": {
+            "x": 256,
+            "y": 1216
+        },
+        "count": "3x1",
+        "animation": "idle_down",
+        "size": 32
+    },
+    "cobaltium": {
+        "start": {
+            "x": 352,
+            "y": 1216
+        },
+        "count": "3x4",
+        "animation": "walk",
+        "size": 32
+    },
+    "terrakium": {
+        "start": {
+            "x": 448,
+            "y": 1216
+        },
+        "count": "3x4",
+        "animation": "walk",
+        "size": 32
+    },
+    "viridium": {
+        "start": {
+            "x": 544,
+            "y": 1216
+        },
+        "count": "3x4",
+        "animation": "walk",
+        "size": 32
+    },
+    "demeteros": {
+        "start": {
+            "x": 640,
+            "y": 1216
+        },
+        "count": "3x1",
+        "animation": "idle_down",
+        "size": 32
+    },
+    "pokeball": {
+        "start": {
+            "x": 32,
+            "y": 1216
+        },
+        "count": "1x1",
+        "animation": "idle",
+        "size": 32
+    }
+}

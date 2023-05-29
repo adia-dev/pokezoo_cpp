@@ -97,13 +97,14 @@ void Application::init_fonts() {
 void Application::init_trainer() {
   LoggerManager::log_info("Initializing trainer");
 
-  Trainer trainer("bw_characters.png", 0, 0, 32, 32);
+  Trainer trainer("bw_overworld.png", 0, 0, 32, 32);
   trainer.set_name("Ash");
 
   _trainer = std::make_unique<Trainer>(trainer);
   AnimationSerializer::load_animations(_trainer->get_animation_controller(),
                                        "../src/assets/animations/"
-                                       "trainers/bw_male.json");
+                                       "pokemons/bw_overworld.json",
+                                       "zorua");
 
   LoggerManager::log_info("Initializing trainer done");
 }
@@ -125,6 +126,18 @@ void Application::init_sprites() {
   new_sprite.attach_animation_controller(animation_controller);
 
   _sprites.push_back(std::make_unique<Sprite>(new_sprite));
+
+  Sprite kyurem("bw_overworld.png", 736, 1216, 128, 128);
+  AnimationController kyurem_animation_controller;
+  AnimationSerializer::load_animations(
+      kyurem_animation_controller,
+      "../src/assets/animations/pokemons/bw_overworld.json", "kyurem");
+  kyurem_animation_controller.play_animation("idle_down");
+
+  kyurem.attach_animation_controller(kyurem_animation_controller);
+  kyurem.set_position(100, 100);
+
+  _sprites.push_back(std::make_unique<Sprite>(kyurem));
 
   LoggerManager::log_info("Initializing sprites done");
 }
@@ -215,7 +228,9 @@ void Application::render() {
   ss << "Mouse: " << mouse_coords << '\n';
   ss << "FPS: " << std::to_string(_fps) << '\n';
   ss << "Delta time: " << std::to_string(_delta_time) << '\n'
-     << "Keyboard Direction: " << InputManager::get_directional_input() << '\n';
+     << "Keyboard Direction: " << InputManager::get_directional_input() << '\n'
+     << "Animation: "
+     << _trainer->get_animation_controller().get_current_animation() << '\n';
 
   RenderUtils::render_text(
       _renderer.get(), AssetManager::get_font("Roboto/Roboto-Regular.ttf", 16),
