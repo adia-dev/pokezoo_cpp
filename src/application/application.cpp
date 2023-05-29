@@ -49,7 +49,7 @@ void Application::init() {
                                                 DEFAULT_WINDOW_FLAGS);
 
   // initialize SDL
-  if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
+  if (SDL_Init(SDL_INIT_VIDEO) != 0) {
     LoggerManager::log_error("SDL_Init Error: " + std::string(SDL_GetError()));
     std::cerr << "SDL_Init Error: " << SDL_GetError() << std::endl;
     exit(EXIT_FAILURE);
@@ -63,12 +63,10 @@ void Application::init() {
   }
 
   // Init window and renderer
-  _window = std::unique_ptr<SDL_Window, decltype(&SDL_DestroyWindow)>(
-      SDL_CreateWindow(_config->window_config.title, SDL_WINDOWPOS_CENTERED,
-                       SDL_WINDOWPOS_CENTERED, _config->window_config.width,
-                       _config->window_config.height,
-                       _config->window_config.flags),
-      SDL_DestroyWindow);
+  SDL_CreateWindowAndRenderer(
+      _config->window_config.width, _config->window_config.height,
+      _config->window_config.flags, (SDL_Window **)&_window,
+      (SDL_Renderer **)&_renderer);
 
   if (_window == nullptr) {
     LoggerManager::log_error("SDL_CreateWindow Error: " +
@@ -76,10 +74,6 @@ void Application::init() {
     std::cerr << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
     exit(EXIT_FAILURE);
   }
-
-  _renderer = std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)>(
-      SDL_CreateRenderer(_window.get(), -1, SDL_RENDERER_ACCELERATED),
-      SDL_DestroyRenderer);
 
   if (_renderer == nullptr) {
     LoggerManager::log_error("SDL_CreateRenderer Error: " +
@@ -192,9 +186,9 @@ void Application::adjust_window_scale() {
 
 void Application::update() {
   uint32_t current_frame_ticks = SDL_GetTicks();
-  _fps = 1000 / (current_frame_ticks - _last_frame_ticks);
+  _fps = 1000 / std::min((current_frame_ticks - _last_frame_ticks), 10u);
   while (_fps > Application::get_config()->window_config.max_fps) {
-    _fps = 1000 / (SDL_GetTicks() - _last_frame_ticks);
+    _fps = 1000 / std::min(SDL_GetTicks() - _last_frame_ticks, 10u);
   }
   _delta_time = (current_frame_ticks - _last_frame_ticks) / 1000.0f;
   _last_frame_ticks = current_frame_ticks;
