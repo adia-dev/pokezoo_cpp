@@ -1,7 +1,7 @@
 #pragma once
 
 #include <core/config.h>
-#include <curl/curl.h>
+// #include <curl/curl.h>
 #include <managers/logger/logger_manager.h>
 
 struct RequestResponse {

@@ -272,3 +272,5 @@ dist
 build/
 checks.json
 cache/
+
+build.*/

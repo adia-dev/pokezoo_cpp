@@ -19,6 +19,7 @@ public:
   }
 
   static void run();
+  static void quit();
 
   bool is_running() const { return _is_running; }
 

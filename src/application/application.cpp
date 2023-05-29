@@ -7,14 +7,37 @@ void Application::run() {
   Application *app = Application::get();
   app->init();
 
+#ifdef __EMSCRIPTEN__
+  emscripten_set_main_loop_arg(
+      [](void *arg) {
+        auto app = static_cast<Application *>(arg);
+        app->on_frame_start();
+        app->handle_events();
+        app->handle_input();
+        app->update();
+        app->render();
+      },
+      app, 0, 1);
+#else
   while (app->_is_running) {
     app->on_frame_start();
     app->handle_events();
+    app->handle_input();
     app->update();
     app->render();
   }
 
   app->clean();
+#endif
+}
+
+void Application::quit() {
+  auto app = get();
+  app->_is_running = false;
+
+#ifdef __EMSCRIPTEN__
+  emscripten_cancel_main_loop();
+#endif
 }
 
 void Application::init() {
