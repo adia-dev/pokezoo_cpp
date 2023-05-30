@@ -33,14 +33,13 @@ public:
     return Vector2(x + (other.x - x) * t, y + (other.y - y) * t);
   }
 
+  Vector2 manhattan_distance(const Vector2 &other) const {
+    return Vector2(std::abs(x - other.x), std::abs(y - other.y));
+  }
+
   // Distance between two vectors
   T distance(const Vector2 &other) const {
     return std::sqrt(std::pow(x - other.x, 2) + std::pow(y - other.y, 2));
-  }
-
-  // Manhattan distance between two vectors
-  T manhattan_distance(const Vector2 &other) const {
-    return std::abs(x - other.x) + std::abs(y - other.y);
   }
 
   // Dot product of two vectors
@@ -86,10 +85,6 @@ public:
 
   static T magnitude(const Vector2 &v) { return v.magnitude(); }
 
-  static T manhattan_distance(const Vector2 &v1, const Vector2 &v2) {
-    return v1.manhattan_distance(v2);
-  }
-
   static T dot_product(const Vector2 &v1, const Vector2 &v2) {
     return v1.dot_product(v2);
   }
@@ -108,6 +103,28 @@ public:
 
   static Vector2 to_pixels(const Vector2 &v, int tile_size) {
     return Vector2(v.x * tile_size, v.y * tile_size);
+  }
+
+  static Vector2 normalized(const Vector2 &v) { return v.normalized(); }
+
+  static Vector2<T> from_direction(Direction direction) {
+    switch (direction) {
+    case Direction::UP:
+      return Vector2<T>(0, -1);
+    case Direction::DOWN:
+      return Vector2<T>(0, 1);
+    case Direction::LEFT:
+      return Vector2<T>(-1, 0);
+    case Direction::RIGHT:
+      return Vector2<T>(1, 0);
+    default:
+      return Vector2<T>(0, 0);
+    }
+  }
+
+  static Vector2<T> manhattan_distance(const Vector2<T> &v1,
+                                       const Vector2<T> &v2) {
+    return Vector2<T>(std::abs(v1.x - v2.x), std::abs(v1.y - v2.y));
   }
 
   static Vector2<T> zero() { return Vector2<T>(0, 0); }
