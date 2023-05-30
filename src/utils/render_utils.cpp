@@ -55,12 +55,12 @@ void render_text(SDL_Renderer *renderer, TTF_Font *font, const char *text,
     exit(EXIT_FAILURE);
   }
 
-  SDL_Surface *surface = nullptr;
-  if (wrap) {
-    surface = TTF_RenderText_Blended_Wrapped(font, text, color, 200);
-  } else {
-    surface = TTF_RenderText_Solid(font, text, color);
-  }
+  SDL_Surface *surface = TTF_RenderUTF8_Blended_Wrapped(font, text, color, 450);
+  // if (wrap) {
+  //   surface = TTF_RenderText_Blended_Wrapped(font, text, color, 450);
+  // } else {
+  //   surface = TTF_RenderText_Solid(font, text, color);
+  // }
 
   if (surface == nullptr) {
     LoggerManager::log_error("SDL_Surface is null");

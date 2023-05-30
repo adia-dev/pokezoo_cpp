@@ -27,11 +27,18 @@ public:
       set_key_state(event.key.keysym.sym, InputState::RELEASED);
       break;
     case SDL_MOUSEMOTION: {
-      set_mouse_position(
-          event.motion.x / Application::get_config()->window_config.scale.x *
-              2.f,
-          event.motion.y / Application::get_config()->window_config.scale.y *
-              2.f);
+      set_mouse_position(event.motion.x, event.motion.y);
+      // if (SDL_GetWindowFlags(Application::get()->get_window()) &
+      //     SDL_WINDOW_ALLOW_HIGHDPI) {
+      // } else {
+      //   set_mouse_position(
+      //       event.motion.x / Application::get_config()->window_config.scale.x
+      //       *
+      //           2.f,
+      //       event.motion.y / Application::get_config()->window_config.scale.y
+      //       *
+      //           2.f);
+      // }
     } break;
     case SDL_MOUSEWHEEL:
       set_mouse_wheel(event.wheel.x, event.wheel.y);

@@ -32,6 +32,14 @@ public:
 
   static ApplicationConfig *get_config() { return get()->_config.get(); }
 
+  static void set_selected_pokemon(std::shared_ptr<Pokemon> pokemon) {
+    get()->_selected_pokemon = pokemon;
+  }
+
+  static std::shared_ptr<Pokemon> get_selected_pokemon() {
+    return get()->_selected_pokemon;
+  }
+
   void set_config(std::unique_ptr<ApplicationConfig> config) {
     _config = std::move(config);
   }
@@ -65,8 +73,9 @@ private:
 
   // instances
   std::unique_ptr<Map> _map = nullptr;
-  std::vector<std::unique_ptr<Pokemon>> _pokemons;
+  std::vector<std::shared_ptr<Pokemon>> _pokemons;
   std::unique_ptr<Trainer> _trainer = nullptr;
+  std::shared_ptr<Pokemon> _selected_pokemon = nullptr;
 
   // states
   bool _is_running = false;

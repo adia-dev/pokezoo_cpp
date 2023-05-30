@@ -37,7 +37,7 @@
 #define DEFAULT_WINDOW_HEIGHT 960
 #define DEFAULT_WINDOW_FLAGS                                                   \
   SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED |             \
-      SDL_WINDOW_INPUT_FOCUS | SDL_WINDOW_ALLOW_HIGHDPI
+      SDL_WINDOW_INPUT_FOCUS
 
 #define DEFAULT_TILE_SIZE 16
 
@@ -53,8 +53,7 @@ struct WindowConfig {
   int tile_size = DEFAULT_TILE_SIZE;
   uint16_t max_fps = 240;
   uint32_t flags = SDL_WINDOW_SHOWN | SDL_WINDOW_INPUT_FOCUS |
-                   SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED |
-                   SDL_WINDOW_ALLOW_HIGHDPI;
+                   SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED;
 };
 
 struct ApplicationConfig {

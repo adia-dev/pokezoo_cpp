@@ -136,7 +136,7 @@ void Application::init_pokemons() {
   for (auto &[name, pokemon] : loaded_pokemons) {
     pokemon.set_position(rand() % 1000, rand() % 1000);
     pokemon.get_animation_controller().play_animation("walk_down");
-    _pokemons.push_back(std::make_unique<Pokemon>(pokemon));
+    _pokemons.push_back(std::make_shared<Pokemon>(pokemon));
   }
 
   LoggerManager::log_info("Initializing sprites done");
@@ -254,6 +254,11 @@ void Application::render() {
        << '\n'
        << "Animation: "
        << _trainer->get_animation_controller().get_current_animation() << '\n';
+    ss << "Trainer Pos: " << _trainer->get_position() << '\n';
+    ss << "Selected Pokemon: "
+       << (_selected_pokemon != nullptr ? _selected_pokemon->get_name()
+                                        : "None")
+       << '\n';
     RenderUtils::render_text(
         _renderer.get(),
         AssetManager::get_font("Roboto/Roboto-Regular.ttf", 16),
@@ -263,7 +268,10 @@ void Application::render() {
   SDL_RenderPresent(_renderer.get());
 }
 
-void Application::on_frame_start() { InputManager::update_key_states(); }
+void Application::on_frame_start() {
+  InputManager::update_key_states();
+  InputManager::update_mouse_states();
+}
 
 void Application::loop() {
   // same as run, for emscripten
@@ -313,6 +321,37 @@ void Application::handle_events() {
 void Application::handle_input() {
   if (InputManager::is_key_pressed(SDLK_TAB)) {
     get()->get_config()->is_debug_mode = !get()->get_config()->is_debug_mode;
+  }
+
+  if (InputManager::is_mouse_pressed(MouseButton::LEFT)) {
+    for (auto &pokemon : _pokemons) {
+      if (pokemon->contains(InputManager::get_mouse_position())) {
+        set_selected_pokemon(pokemon);
+        break;
+      }
+    }
+  }
+
+  if (InputManager::is_mouse_down(MouseButton::LEFT)) {
+    if (_selected_pokemon) {
+      _selected_pokemon->set_scale(5);
+      _selected_pokemon->set_position(
+          InputManager::get_mouse_position().x -
+              _selected_pokemon->get_src_rect().w / 2 * 5,
+          InputManager::get_mouse_position().y -
+              _selected_pokemon->get_src_rect().h / 2 * 5);
+    }
+  }
+
+  if (InputManager::is_mouse_released(MouseButton::LEFT)) {
+    if (_selected_pokemon) {
+      _selected_pokemon->set_scale(1);
+      _selected_pokemon->set_position(
+          InputManager::get_mouse_position().x -
+              _selected_pokemon->get_src_rect().w / 2,
+          InputManager::get_mouse_position().y -
+              _selected_pokemon->get_src_rect().h / 2);
+    }
   }
 }
 
