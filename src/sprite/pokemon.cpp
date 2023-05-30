@@ -4,6 +4,7 @@
 #include <managers/asset/asset_manager.h>
 #include <managers/logger/logger_manager.h>
 #include <parsers/json.hpp>
+#include <utils/enums_utils.h>
 
 using json = nlohmann::json;
 
@@ -97,6 +98,9 @@ Pokemon::load_pokemons(const std::string &file_path) {
     return {};
   }
 
+  LoggerManager::log_debug(std::to_string(json_data["pokemons"].size()) +
+                           " pokemons found in " + file_path);
+
   std::string texture_name = json_data["texture_name"].get<std::string>();
 
   SDL_Texture *texture = AssetManager::get_texture(texture_name.c_str());
@@ -113,25 +117,47 @@ Pokemon::load_pokemons(const std::string &file_path) {
   int width = 32;
   int height = 32;
 
+  Stats stats;
+
+  std::vector<Type> types;
+
   for (const auto &pokemon : json_data["pokemons"]) {
 
     try {
       pokemon_name = pokemon["name"].get<std::string>();
-      scale = pokemon["scale"].get<float>();
-      width = pokemon["width"].get<int>();
-      height = pokemon["height"].get<int>();
 
       pokemons[pokemon_name] =
           Pokemon(pokemon_name, texture, 0, 0, width, height, scale);
 
-      if (pokemon.contains("walk_speed") && pokemon["walk_speed"].is_number()) {
-        walk_speed = pokemon["walk_speed"].get<float>();
+      if (pokemon.contains("properties") && pokemon["properties"].is_object()) {
+        walk_speed = pokemon["properties"]["walk_speed"].get<float>();
+        run_speed = pokemon["properties"]["run_speed"].get<float>();
+        scale = pokemon["properties"]["scale"].get<float>();
+        width = pokemon["properties"]["width"].get<int>();
+        height = pokemon["properties"]["height"].get<int>();
+
         pokemons[pokemon_name].set_walk_speed(walk_speed);
+        pokemons[pokemon_name].set_run_speed(run_speed);
+        pokemons[pokemon_name].set_scale(scale);
+        pokemons[pokemon_name].set_size(width, height);
       }
 
-      if (pokemon.contains("run_speed") && pokemon["run_speed"].is_number()) {
-        run_speed = pokemon["run_speed"].get<float>();
-        pokemons[pokemon_name].set_run_speed(run_speed);
+      if (pokemon.contains("stats") && pokemon["stats"].is_object()) {
+        stats.hp = pokemon["stats"]["hp"].get<int>();
+        stats.attack = pokemon["stats"]["attack"].get<int>();
+        stats.defense = pokemon["stats"]["defense"].get<int>();
+        stats.special_attack = pokemon["stats"]["spAttack"].get<int>();
+        stats.special_defense = pokemon["stats"]["spDefense"].get<int>();
+        stats.speed = pokemon["stats"]["speed"].get<int>();
+        pokemons[pokemon_name].set_stats(stats);
+      }
+
+      if (pokemon.contains("types") && pokemon["types"].is_array()) {
+        for (const auto &type : pokemon["types"]) {
+          types.push_back(
+              EnumsUtils::type_from_string(type.get<std::string>()));
+        }
+        pokemons[pokemon_name].set_types(types);
       }
 
       if (pokemon.contains("animations") && pokemon["animations"].is_array()) {
@@ -155,6 +181,10 @@ Pokemon::load_pokemons(const std::string &file_path) {
             if (animation_json["preset"] == "idle_down") {
               AnimationSerializer::idle_down_preset(controller, animation_json);
             }
+
+            if (animation_json["preset"] == "walk_2x3_flipped") {
+              AnimationSerializer::walk_2by3_preset(controller, animation_json);
+            }
             continue;
           }
 
@@ -171,11 +201,11 @@ Pokemon::load_pokemons(const std::string &file_path) {
     }
   }
 
-  LoggerManager::log_info("Loaded " + std::to_string(pokemons.size()) +
-                          " pokemons from " + file_path);
+  LoggerManager::log_debug("Loaded " + std::to_string(pokemons.size()) +
+                           " pokemons from " + file_path);
 
   // names
-  LoggerManager::log_info("Pokemons: " + [&]() {
+  LoggerManager::log_debug("Pokemons: " + [&]() {
     std::string names;
     for (const auto &pokemon : pokemons) {
       names += pokemon.first + ", ";

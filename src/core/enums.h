@@ -55,3 +55,36 @@ enum class Direction { NONE, UP, DOWN, LEFT, RIGHT };
  * PING_PONG: Animation plays forward and then in reverse.
  */
 enum class AnimationDirection { FORWARD, REVERSE, LOOP, PING_PONG };
+
+/**
+ * Enum for Pokemon types.
+ * UNKNOWN: Unknown type.
+ * Please refer to https://pokemondb.net/type for more information.
+ */
+enum class Type {
+  UNKNOWN = -1,
+  NORMAL,
+  FIRE,
+  WATER,
+  GRASS,
+  ELECTRIC,
+  ICE,
+  FIGHTING,
+  POISON,
+  GROUND,
+  FLYING,
+  PSYCHIC,
+  BUG,
+  ROCK,
+  GHOST,
+  DARK,
+  DRAGON,
+  STEEL,
+  FAIRY,
+  COUNT
+};
+
+/**
+ * Enum for pokemon genders.
+ */
+enum class Gender { UNKNOWN_BUT_DEFINITELY_MALE_OR_FEMALE, MALE, FEMALE };

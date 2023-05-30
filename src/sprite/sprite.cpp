@@ -1,6 +1,8 @@
 #include "sprite.h"
 #include <managers/asset/asset_manager.h>
+#include <managers/input/input_manager.h>
 #include <managers/logger/logger_manager.h>
+#include <utils/render_utils.h>
 
 Sprite::Sprite(const char *texture_name, int x, int y, int width, int height,
                float scale) {
@@ -25,6 +27,8 @@ void Sprite::init(int x, int y, int width, int height, float scale) {
   _dest_rect.h = height * scale;
 
   _id = UUID::generate_v4_ish();
+
+  _debug |= ApplicationConfig::is_debug_mode;
 }
 
 void Sprite::render(SDL_Renderer *renderer) {
@@ -43,6 +47,23 @@ void Sprite::render(SDL_Renderer *renderer) {
   }
 
   SDL_RenderCopy(renderer, _texture, &_src_rect, &_dest_rect);
+
+  if (_debug || ApplicationConfig::is_debug_mode) {
+
+    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+    SDL_RenderDrawRect(renderer, &_dest_rect);
+
+    if (contains(InputManager::get_mouse_position())) {
+      std::stringstream ss;
+      ss << "id: " << _id << '\n';
+      ss << "name: " << _name << '\n';
+      ss << "x: " << _dest_rect.x << " y: " << _dest_rect.y;
+      RenderUtils::render_text(
+          renderer, AssetManager::get_font("Poppins/Poppins-Regular.ttf", 8),
+          ss.str().c_str(), {255, 255, 255, 255}, _dest_rect.x,
+          _dest_rect.y - 16, true);
+    }
+  }
 }
 
 void Sprite::update(double delta_time) {

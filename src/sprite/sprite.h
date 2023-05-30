@@ -70,6 +70,19 @@ public:
 
   const float &get_scale() const { return _scale; }
 
+  bool is_colliding(const SDL_Rect &rect) const {
+    return SDL_HasIntersection(&_dest_rect, &rect);
+  }
+
+  bool is_colliding(const Sprite &sprite) const {
+    return SDL_HasIntersection(&_dest_rect, &sprite._dest_rect);
+  }
+
+  template <typename T> bool contains(const Vector2<T> &vec) const {
+    SDL_Point point = {(int)vec.x, (int)vec.y};
+    return SDL_PointInRect(&point, &_dest_rect);
+  }
+
   AnimationController &get_animation_controller() {
     return _animation_controller;
   }
@@ -78,6 +91,9 @@ public:
   }
 
   SDL_Texture *get_texture() const { return _texture; }
+
+  void set_name(const std::string &name) { _name = name; }
+  const std::string &get_name() const { return _name; }
 
   friend std::ostream &operator<<(std::ostream &os, const Sprite &sprite) {
     // print the class like a json object, deconstruct the rects
@@ -103,6 +119,7 @@ public:
   }
 
 protected:
+  std::string _name;
   std::string _id;
   Direction _direction = Direction::DOWN;
   AnimationController _animation_controller;
@@ -110,6 +127,7 @@ protected:
   SDL_Rect _src_rect;
   SDL_Rect _dest_rect;
   float _scale = 1;
+  bool _debug = false;
 
   void init(int x, int y, int width, int height, float scale);
 };

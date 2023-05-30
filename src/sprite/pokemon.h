@@ -3,6 +3,7 @@
 
 #include "sprite.h"
 #include <filesystem>
+#include <structs/stats.h>
 
 class Pokemon : public Sprite {
 public:
@@ -29,6 +30,20 @@ public:
 
   void set_run_speed(float speed) { _run_speed = speed; }
 
+  void set_speed(float speed) { _speed = speed; }
+
+  void set_pokedex_id(const std::string &pokedex_id) {
+    _pokedex_id = pokedex_id;
+  }
+
+  const std::string &get_pokedex_id() const { return _pokedex_id; }
+
+  void set_stats(const Stats &stats) { _stats = stats; }
+  const Stats &get_stats() const { return _stats; }
+
+  void set_types(const std::vector<Type> &types) { _types = types; }
+  const std::vector<Type> &get_types() const { return _types; }
+
   static std::map<std::string, Pokemon>
   load_pokemons(const std::string &file_path);
 
@@ -50,6 +65,10 @@ public:
   }
 
 private:
+  std::string _pokedex_id;
+  std::vector<Type> _types;
+  Stats _stats;
+  Gender _gender;
   std::string _name;
   float _walk_speed = 200;
   float _run_speed = 300;
