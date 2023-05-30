@@ -6,6 +6,8 @@
 namespace EnumsUtils {
 
 std::string direction_to_string(Direction direction);
+Direction string_to_direction(const std::string &direction);
+AnimationDirection string_to_animation_direction(const std::string &direction);
 std::string
 animation_direction_to_string(AnimationDirection animation_direction);
 std::string

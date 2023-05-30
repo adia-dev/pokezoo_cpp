@@ -11,8 +11,33 @@ std::string EnumsUtils::direction_to_string(Direction direction) {
   case Direction::RIGHT:
     return "RIGHT";
   default:
-    return "UNKNOWN";
+    return "NONE";
   }
+}
+
+Direction EnumsUtils::string_to_direction(const std::string &direction) {
+  if (direction == "UP")
+    return Direction::UP;
+  if (direction == "DOWN")
+    return Direction::DOWN;
+  if (direction == "LEFT")
+    return Direction::LEFT;
+  if (direction == "RIGHT")
+    return Direction::RIGHT;
+  return Direction::NONE;
+}
+
+AnimationDirection
+EnumsUtils::string_to_animation_direction(const std::string &direction) {
+  if (direction == "FORWARD")
+    return AnimationDirection::FORWARD;
+  if (direction == "REVERSE")
+    return AnimationDirection::REVERSE;
+  if (direction == "LOOP")
+    return AnimationDirection::LOOP;
+  if (direction == "PING PONG")
+    return AnimationDirection::PING_PONG;
+  return AnimationDirection::LOOP;
 }
 
 std::string

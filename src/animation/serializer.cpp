@@ -1,76 +1,86 @@
 #include "serializer.h"
 #include <managers/logger/logger_manager.h>
+#include <utils/enums_utils.h>
 
 void AnimationSerializer::load_animations(AnimationController &controller,
-                                          const std::string &json_file_path,
+                                          const std::filesystem::path &path,
                                           const std::string &key) {
-  std::ifstream file(json_file_path);
+  std::ifstream file(path.string());
   if (!file.is_open()) {
-    LoggerManager::log_fatal("Could not open file " + json_file_path);
+    LoggerManager::log_fatal("Could not open file " + path.string());
     return;
   }
 
   json json_data;
+
   try {
     file >> json_data;
   } catch (const std::exception &e) {
-    LoggerManager::log_fatal("Could not parse JSON file " + json_file_path +
-                             ": " + e.what());
     file.close();
+    LoggerManager::log_fatal("Could not parse JSON file " + path.string() +
+                             ": " + e.what());
     return;
   }
 
   file.close();
 
   if (!json_data.is_object()) {
-    // Handle invalid JSON object error
-    LoggerManager::log_fatal("Could not parse JSON file " + json_file_path +
+    LoggerManager::log_fatal("Could not parse JSON file " + path.string() +
                              ": invalid JSON object");
     return;
   }
 
-  if (key.empty() && json_data.find("animations") == json_data.end()) {
-    // Handle missing "animations" key error
-    LoggerManager::log_fatal("Could not parse JSON file " + json_file_path +
-                             ": missing \"animations\" key");
-    return;
-  } else if (!key.empty() && json_data.find(key) == json_data.end()) {
-    // Handle missing key error
-    LoggerManager::log_fatal("Could not parse JSON file " + json_file_path +
-                             ": missing \"" + key + "\" key");
-    return;
+  if (key.empty()) {
+    if (json_data.find("animations") == json_data.end()) {
+      LoggerManager::log_fatal("Could not parse JSON file " + path.string() +
+                               ": missing \"animations\" key");
+      return;
+    }
+  } else {
+    if (json_data.find(key) == json_data.end()) {
+      // Handle missing key error
+      LoggerManager::log_fatal("Could not parse JSON file " + path.string() +
+                               ": missing \"" + key + "\" key");
+      return;
+    }
   }
 
   const json &animations_json =
       key.empty() ? json_data["animations"] : json_data[key]["animations"];
 
+  // Check that "animations" value is an array
   if (!animations_json.is_array()) {
     // Handle invalid "animations" value error
-    LoggerManager::log_fatal("Could not parse JSON file " + json_file_path +
+    LoggerManager::log_fatal("Could not parse JSON file " + path.string() +
                              ": invalid \"animations\" value");
     return;
   }
 
+  // Loop through animations in JSON file
   for (const auto &animation_json : animations_json) {
+    // If the JSON object is invalid, log a warning and skip this animation
     if (!animation_json.is_object()) {
-      // Handle invalid animation JSON object error
-      LoggerManager::log_warning("Could not parse JSON file " + json_file_path +
+      LoggerManager::log_warning("Could not parse JSON file " + path.string() +
                                  ": invalid animation JSON object");
       continue;
     }
 
+    // Check if the animation is a preset
     if (animation_json.find("preset") != animation_json.end() &&
         animation_json["preset"].is_string()) {
+      // If the animation is a walk preset, create a walk animation
       if (animation_json["preset"] == "walk") {
         walk_preset(controller, animation_json);
       }
 
+      // If the animation is an idle_down preset, create an idle_down animation
       if (animation_json["preset"] == "idle_down") {
         idle_down_preset(controller, animation_json);
       }
       continue;
     }
 
+    // Process the animation
     Animation new_animation;
     process_animation_json(animation_json, new_animation);
     controller.add_animation(new_animation.name, new_animation);
@@ -93,45 +103,34 @@ void AnimationSerializer::process_animation_json(const json &animation_json,
       animation_json["direction"].is_string()) {
     const std::string &direction =
         animation_json["direction"].get<std::string>();
-    if (direction == "LOOP") {
-      animation.direction = AnimationDirection::LOOP;
-    } else if (direction == "FORWARD") {
-      animation.direction = AnimationDirection::FORWARD;
-    } else if (direction == "REVERSE") {
-      animation.direction = AnimationDirection::REVERSE;
-    } else {
-      // Handle invalid "direction" value error
-      LoggerManager::log_warning("Could not parse animation JSON object: "
-                                 "invalid \"direction\" value");
-      return;
-    }
+    animation.direction = EnumsUtils::string_to_animation_direction(direction);
   } else {
     // Handle missing or invalid "direction" value error
     LoggerManager::log_warning("Could not parse animation JSON object: missing "
                                "or invalid \"direction\" value");
-    return;
+    animation.direction = AnimationDirection::LOOP;
   }
 
-  if (animation_json.find("frames") != animation_json.end() &&
-      animation_json["frames"].is_array()) {
-    const json &frames_json = animation_json["frames"];
-    for (const auto &frame_json : frames_json) {
-      if (!frame_json.is_object()) {
-        // Handle invalid frame JSON object error
-        LoggerManager::log_warning("Could not parse animation JSON object: "
-                                   "invalid frame JSON object");
-        continue;
-      }
-
-      Frame frame;
-      process_frame_json(frame_json, frame);
-      animation.frames.push_back(frame);
-    }
-  } else {
+  if (animation_json.find("frames") == animation_json.end() ||
+      !animation_json["frames"].is_array()) {
     // Handle missing or invalid "frames" value error
     LoggerManager::log_warning("Could not parse animation JSON object: missing "
                                "or invalid \"frames\" value");
     return;
+  }
+
+  const json &frames_json = animation_json["frames"];
+  for (const auto &frame_json : frames_json) {
+    if (!frame_json.is_object()) {
+      // Handle invalid frame JSON object error
+      LoggerManager::log_warning("Could not parse animation JSON object: "
+                                 "invalid frame JSON object");
+      continue;
+    }
+
+    Frame frame;
+    process_frame_json(frame_json, frame);
+    animation.frames.push_back(frame);
   }
 }
 

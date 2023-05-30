@@ -8,11 +8,11 @@
 #include "animation.h"
 #include "animation_controller.h"
 
-using json = nlohmann::json;
+using json = nlohmann::json; // not a fan of this
 
 namespace AnimationSerializer {
 void load_animations(AnimationController &controller,
-                     const std::string &json_file_path,
+                     const std::filesystem::path &path,
                      const std::string &key = "");
 void process_animation_json(const json &animation_json, Animation &animation);
 void process_frame_json(const json &frame_json, Frame &frame);
