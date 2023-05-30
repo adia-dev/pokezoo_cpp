@@ -232,3 +232,37 @@ void AnimationSerializer::idle_down_preset(AnimationController &controller,
   }
   controller.add_animation(idle_animation.name, idle_animation);
 }
+
+void AnimationSerializer::walk_2by3_preset(AnimationController &controller,
+                                           const json &animation_json) {
+  std::vector<std::string> directions = {"up", "down", "left", "right"};
+
+  Vector2i start = {animation_json["start"]["x"], animation_json["start"]["y"]};
+  Vector2i size = {animation_json["size"]["width"],
+                   animation_json["size"]["height"]};
+
+  for (int i = 0; i < directions.size(); i++) {
+    Animation new_animation("walk_" + directions[i], AnimationDirection::LOOP);
+    for (int j = 0; j < 2; j++) {
+      if (j == 0) {
+        Animation idle_animation("idle_" + directions[i],
+                                 AnimationDirection::LOOP);
+        Frame frame;
+        frame.rect = {start.x + j * size.x,
+                      start.y + (i == 3 ? i - 1 : 1) * size.y, size.x, size.y};
+        frame.duration = 100;
+        frame.flipped = i == 3;
+        idle_animation.frames.push_back(frame);
+        controller.add_animation(idle_animation.name, idle_animation);
+      }
+
+      Frame frame;
+      frame.rect = {start.x + j * size.x,
+                    start.y + (i == 3 ? i - 1 : 1) * size.y, size.x, size.y};
+      frame.duration = 100;
+      frame.flipped = i == 3;
+      new_animation.frames.push_back(frame);
+      controller.add_animation(new_animation.name, new_animation);
+    }
+  }
+}

@@ -21,4 +21,7 @@ void walk_preset(AnimationController &controller, const json &animation_json);
 void idle_down_preset(AnimationController &controller,
                       const json &animation_json);
 
+void walk_2by3_preset(AnimationController &controller,
+                      const json &animation_json);
+
 } // namespace AnimationSerializer
