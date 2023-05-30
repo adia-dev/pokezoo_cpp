@@ -1,5 +1,6 @@
 #pragma once
 
+#include <application/application.h>
 #include <core/config.h>
 #include <structs/my_vector.h>
 #include <utils/string_utils.h>
@@ -24,6 +25,16 @@ public:
       break;
     case SDL_KEYUP:
       set_key_state(event.key.keysym.sym, InputState::RELEASED);
+      break;
+    case SDL_MOUSEMOTION: {
+      set_mouse_position(
+          event.motion.x / Application::get_config()->window_config.scale.x *
+              2.f,
+          event.motion.y / Application::get_config()->window_config.scale.y *
+              2.f);
+    } break;
+    case SDL_MOUSEWHEEL:
+      set_mouse_wheel(event.wheel.x, event.wheel.y);
       break;
     case SDL_MOUSEBUTTONDOWN:
       set_mouse_button_state(uint8_to_mouse_button(event.button.button),

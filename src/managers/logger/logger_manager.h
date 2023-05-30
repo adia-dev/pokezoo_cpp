@@ -12,7 +12,7 @@
 #include <sstream>
 #include <string>
 
-enum class LogLevel { INFO, WARNING, ERROR, FATAL };
+enum class LogLevel { DEBUG, INFO, WARNING, ERROR, FATAL };
 
 class LoggerManager {
 public:
@@ -36,7 +36,7 @@ public:
     std::stringstream ss;
     ss << "Session started." << std::endl;
 
-    logger->log(LogLevel::INFO, ss.str());
+    logger->log(LogLevel::DEBUG, ss.str());
   }
 
   /**
@@ -84,6 +84,15 @@ public:
   }
 
   /**
+   * Log a debug message, this message will only be logged if the application
+   * was compiled with the DEBUG flag.
+   * @param object The object to log as information.
+   */
+  template <typename T> static void log_debug(const T &object) {
+    log(LogLevel::DEBUG, object);
+  }
+
+  /**
    * Log an informational message.
    * @param object The object to log as information.
    */
@@ -121,6 +130,8 @@ private:
    */
   std::string get_log_level_string(LogLevel level) {
     switch (level) {
+    case LogLevel::DEBUG:
+      return "DEBUG";
     case LogLevel::INFO:
       return "INFO";
     case LogLevel::WARNING:
@@ -135,6 +146,9 @@ private:
 
   std::string get_log_level_color(LogLevel level) {
     switch (level) {
+    case LogLevel::DEBUG:
+      // gray
+      return "\033[0;30m";
     case LogLevel::INFO:
       return "\033[0;34m";
     case LogLevel::WARNING:

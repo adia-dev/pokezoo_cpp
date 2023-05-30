@@ -9,6 +9,7 @@
 #include <SDL_ttf.h>
 
 #include <algorithm>
+#include <assert.h>
 #include <cassert>
 #include <cmath>
 #include <cstdio>
@@ -32,9 +33,11 @@
 
 #include "enums.h"
 
-#define DEFAULT_WINDOW_WIDTH 960
-#define DEFAULT_WINDOW_HEIGHT 540
-#define DEFAULT_WINDOW_FLAGS SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE
+#define DEFAULT_WINDOW_WIDTH 1440
+#define DEFAULT_WINDOW_HEIGHT 960
+#define DEFAULT_WINDOW_FLAGS                                                   \
+  SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED |             \
+      SDL_WINDOW_INPUT_FOCUS | SDL_WINDOW_ALLOW_HIGHDPI
 
 #define DEFAULT_TILE_SIZE 16
 
@@ -50,7 +53,8 @@ struct WindowConfig {
   int tile_size = DEFAULT_TILE_SIZE;
   uint16_t max_fps = 240;
   uint32_t flags = SDL_WINDOW_SHOWN | SDL_WINDOW_INPUT_FOCUS |
-                   SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED;
+                   SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED |
+                   SDL_WINDOW_ALLOW_HIGHDPI;
 };
 
 struct ApplicationConfig {
@@ -60,6 +64,8 @@ struct ApplicationConfig {
 
   WindowConfig window_config;
   Version version = {0, 0, 1};
+
+  inline static bool is_debug_mode = false;
 
   inline static std::string font_path = "../src/assets/fonts/";
   inline static std::string map_path = "../src/assets/maps/";

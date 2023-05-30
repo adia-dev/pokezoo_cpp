@@ -130,42 +130,12 @@ void Application::init_trainer() {
 void Application::init_pokemons() {
   LoggerManager::log_info("Initializing sprites");
 
-  std::vector<std::string> pokemon_list = {
-      "kyurem",    "pikachu",   "keldeo",    "boreas",   "fulguris",
-      "demeteros", "cobaltium", "terrakium", "viridium", "victini",
-      "munna",     "musharna",  "ratentif",  "zorua"};
-
-  for (int i = 0; i < 1000; ++i) {
-    int x = rand() % 1000;
-    int y = rand() % 1000;
-    int pokemon_index = rand() % pokemon_list.size();
-
-    Pokemon new_pokemon("kyurem", "bw_overworld.png", x, y, 32, 32);
-    new_pokemon.set_walk_speed(rand() % 75 + 25);
-    if (pokemon_list[pokemon_index] == "kyurem") {
-      new_pokemon.set_size(128, 128);
-    }
-
-    if (pokemon_list[pokemon_index] == "zorua") {
-      new_pokemon.set_target(_trainer.get());
-    }
-
-    AnimationController animation_controller;
-    AnimationSerializer::load_animations(
-        animation_controller,
-        "../src/assets/animations/pokemons/bw_overworld.json",
-        pokemon_list[pokemon_index]);
-    animation_controller.play_animation("idle_down");
-
-    new_pokemon.attach_animation_controller(animation_controller);
-
-    // _pokemons.push_back(std::make_unique<Pokemon>(new_pokemon));
-  }
-
   auto loaded_pokemons =
       Pokemon::load_pokemons("../src/assets/json/bw_old_overworld.json");
 
-  for (const auto &[name, pokemon] : loaded_pokemons) {
+  for (auto &[name, pokemon] : loaded_pokemons) {
+    pokemon.set_position(rand() % 1000, rand() % 1000);
+    pokemon.get_animation_controller().play_animation("walk_down");
     _pokemons.push_back(std::make_unique<Pokemon>(pokemon));
   }
 
@@ -217,7 +187,7 @@ void Application::update() {
   // update instances
   // _map->update(_delta_time);
 
-  _delta_time = std::max(_delta_time, 0.016);
+  _delta_time = std::max(_delta_time, 0.0016);
 
   if (_trainer) {
     _trainer->update(_delta_time);
@@ -271,17 +241,24 @@ void Application::render() {
                             _config->window_config.tile_size},
                            {255, 0, 0, 100});
 
-  std::stringstream ss;
-  ss << "Mouse: " << mouse_coords << '\n';
-  ss << "FPS: " << std::to_string(_fps) << '\n';
-  ss << "Delta time: " << std::to_string(_delta_time) << '\n'
-     << "Keyboard Direction: " << InputManager::get_directional_input() << '\n'
-     << "Animation: "
-     << _trainer->get_animation_controller().get_current_animation() << '\n';
+  if (ApplicationConfig::is_debug_mode) {
 
-  RenderUtils::render_text(
-      _renderer.get(), AssetManager::get_font("Roboto/Roboto-Regular.ttf", 16),
-      ss.str().c_str(), {255, 255, 255, 255}, 0, 0, true);
+    std::stringstream ss;
+    ss << "Mouse Pos: " << InputManager::get_mouse_position() << '\n';
+    ss << "Mouse coords: " << mouse_coords << '\n';
+    ss << "Window scale: " << Application::get_config()->window_config.scale
+       << '\n';
+    ss << "FPS: " << std::to_string(_fps) << '\n';
+    ss << "Delta time: " << std::to_string(_delta_time) << '\n'
+       << "Keyboard Direction: " << InputManager::get_directional_input()
+       << '\n'
+       << "Animation: "
+       << _trainer->get_animation_controller().get_current_animation() << '\n';
+    RenderUtils::render_text(
+        _renderer.get(),
+        AssetManager::get_font("Roboto/Roboto-Regular.ttf", 16),
+        ss.str().c_str(), {255, 255, 255, 255}, 0, 0, true);
+  }
 
   SDL_RenderPresent(_renderer.get());
 }
@@ -333,7 +310,11 @@ void Application::handle_events() {
   }
 }
 
-void Application::handle_input() {}
+void Application::handle_input() {
+  if (InputManager::is_key_pressed(SDLK_TAB)) {
+    get()->get_config()->is_debug_mode = !get()->get_config()->is_debug_mode;
+  }
+}
 
 void Application::clean() {
   SDL_Quit();
