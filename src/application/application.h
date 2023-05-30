@@ -4,6 +4,7 @@
 #include <managers/asset/asset_manager.h>
 #include <managers/logger/logger_manager.h>
 #include <map/map.h>
+#include <sprite/pokemon.h>
 #include <sprite/sprite.h>
 #include <sprite/trainer.h>
 
@@ -42,7 +43,7 @@ private:
   void init_map();
   void init_fonts();
   void init_trainer();
-  void init_sprites();
+  void init_pokemons();
 
   void adjust_window_scale();
 
@@ -64,7 +65,7 @@ private:
 
   // instances
   std::unique_ptr<Map> _map = nullptr;
-  std::vector<std::unique_ptr<Sprite>> _sprites;
+  std::vector<std::unique_ptr<Pokemon>> _pokemons;
   std::unique_ptr<Trainer> _trainer = nullptr;
 
   // states

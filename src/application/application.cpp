@@ -94,7 +94,7 @@ void Application::init() {
   init_map();
   init_fonts();
   init_trainer();
-  init_sprites();
+  init_pokemons();
 
   LoggerManager::log_info("Application initialized");
 }
@@ -127,35 +127,8 @@ void Application::init_trainer() {
   LoggerManager::log_info("Initializing trainer done");
 }
 
-void Application::init_sprites() {
+void Application::init_pokemons() {
   LoggerManager::log_info("Initializing sprites");
-
-  Sprite new_sprite("pokemons_4th_gen.png", 0, 0, 32, 32);
-  AnimationController animation_controller;
-  Animation idle_up("idle_up");
-  idle_up.add_frame(Frame({0, 0, 32, 32}, 100));
-  idle_up.add_frame(Frame({32, 0, 32, 32}, 100));
-  idle_up.add_frame(Frame({64, 0, 32, 32}, 100));
-  idle_up.add_frame(Frame({96, 0, 32, 32}, 100));
-
-  animation_controller.add_animation("idle_up", idle_up);
-  animation_controller.play_animation("idle_up");
-
-  new_sprite.attach_animation_controller(animation_controller);
-
-  _sprites.push_back(std::make_unique<Sprite>(new_sprite));
-
-  Sprite kyurem("bw_overworld.png", 736, 1216, 128, 128);
-  AnimationController kyurem_animation_controller;
-  AnimationSerializer::load_animations(
-      kyurem_animation_controller,
-      "../src/assets/animations/pokemons/bw_overworld.json", "kyurem");
-  kyurem_animation_controller.play_animation("idle_down");
-
-  kyurem.attach_animation_controller(kyurem_animation_controller);
-  kyurem.set_position(100, 100);
-
-  _sprites.push_back(std::make_unique<Sprite>(kyurem));
 
   std::vector<std::string> pokemon_list = {
       "kyurem",    "pikachu",   "keldeo",    "boreas",   "fulguris",
@@ -167,9 +140,14 @@ void Application::init_sprites() {
     int y = rand() % 1000;
     int pokemon_index = rand() % pokemon_list.size();
 
-    Sprite new_sprite("bw_overworld.png", x, y, 32, 32);
+    Pokemon new_pokemon("kyurem", "bw_overworld.png", x, y, 32, 32);
+    new_pokemon.set_walk_speed(rand() % 75 + 25);
     if (pokemon_list[pokemon_index] == "kyurem") {
-      new_sprite.set_size(128, 128);
+      new_pokemon.set_size(128, 128);
+    }
+
+    if (pokemon_list[pokemon_index] == "zorua") {
+      new_pokemon.set_target(_trainer.get());
     }
 
     AnimationController animation_controller;
@@ -179,9 +157,16 @@ void Application::init_sprites() {
         pokemon_list[pokemon_index]);
     animation_controller.play_animation("idle_down");
 
-    new_sprite.attach_animation_controller(animation_controller);
+    new_pokemon.attach_animation_controller(animation_controller);
 
-    _sprites.push_back(std::make_unique<Sprite>(new_sprite));
+    // _pokemons.push_back(std::make_unique<Pokemon>(new_pokemon));
+  }
+
+  auto loaded_pokemons =
+      Pokemon::load_pokemons("../src/assets/json/bw_old_overworld.json");
+
+  for (const auto &[name, pokemon] : loaded_pokemons) {
+    _pokemons.push_back(std::make_unique<Pokemon>(pokemon));
   }
 
   LoggerManager::log_info("Initializing sprites done");
@@ -232,25 +217,14 @@ void Application::update() {
   // update instances
   // _map->update(_delta_time);
 
-  _delta_time = std::max(_delta_time, 0.0016);
+  _delta_time = std::max(_delta_time, 0.016);
 
   if (_trainer) {
     _trainer->update(_delta_time);
   }
 
   // update sprites
-  for (auto &sprite : _sprites) {
-
-    if (sprite->get_animation_controller().has_animation("walk_right")) {
-      sprite->get_animation_controller().play_animation("walk_right");
-      sprite->move(100 * _delta_time, 0);
-    }
-
-    if (sprite->get_dest_rect().x >
-        _config->window_config.width / _config->window_config.scale.x) {
-      sprite->set_position(0, sprite->get_dest_rect().y);
-    }
-
+  for (auto &sprite : _pokemons) {
     sprite->update(_delta_time);
   }
 }
@@ -279,7 +253,7 @@ void Application::render() {
                            _config->window_config.tile_size,
                            {255, 255, 255, 100});
 
-  for (auto &sprite : _sprites) {
+  for (auto &sprite : _pokemons) {
     sprite->render(_renderer.get());
   }
 

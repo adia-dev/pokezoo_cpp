@@ -1,0 +1,27 @@
+{
+    "texture_name": "bw_old_overworld.png",
+    "pokemons": [
+        {
+            "name": "Pikachu",
+            "walk_speed": 100,
+            "run_speed": 200,
+            "scale": 1,
+            "width": 32,
+            "height": 32,
+            "animations": [
+                {
+                    "preset": "idle_down",
+                    "count": 4,
+                    "start": {
+                        "x": 736,
+                        "y": 1216
+                    },
+                    "size": {
+                        "width": 64,
+                        "height": 64
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -60,6 +60,10 @@ public:
   const std::string &get_id() const { return _id; }
 
   const SDL_Rect &get_src_rect() const { return _src_rect; }
+
+  const Vector2i get_position() const {
+    return Vector2i(_dest_rect.x, _dest_rect.y);
+  }
   const SDL_Rect &get_dest_rect() const { return _dest_rect; }
 
   const Direction &get_direction() const { return _direction; }
@@ -72,6 +76,8 @@ public:
   void attach_animation_controller(AnimationController &animation_controller) {
     _animation_controller = animation_controller;
   }
+
+  SDL_Texture *get_texture() const { return _texture; }
 
   friend std::ostream &operator<<(std::ostream &os, const Sprite &sprite) {
     // print the class like a json object, deconstruct the rects

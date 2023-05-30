@@ -1,0 +1,86 @@
+[
+{
+  "directory": "/Users/abdoulayedia/Projects/dev/C++/pokezoo/build/osx-debug",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -I/Users/abdoulayedia/Projects/dev/C++/pokezoo/src -I/opt/homebrew/include -isystem /opt/homebrew/include/SDL2  -O0 -fsanitize=address -g -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -o CMakeFiles/pokezoo.dir/src/animation/animation_controller.cpp.o -c /Users/abdoulayedia/Projects/dev/C++/pokezoo/src/animation/animation_controller.cpp",
+  "file": "/Users/abdoulayedia/Projects/dev/C++/pokezoo/src/animation/animation_controller.cpp",
+  "output": "CMakeFiles/pokezoo.dir/src/animation/animation_controller.cpp.o"
+},
+{
+  "directory": "/Users/abdoulayedia/Projects/dev/C++/pokezoo/build/osx-debug",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -I/Users/abdoulayedia/Projects/dev/C++/pokezoo/src -I/opt/homebrew/include -isystem /opt/homebrew/include/SDL2  -O0 -fsanitize=address -g -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -o CMakeFiles/pokezoo.dir/src/animation/serializer.cpp.o -c /Users/abdoulayedia/Projects/dev/C++/pokezoo/src/animation/serializer.cpp",
+  "file": "/Users/abdoulayedia/Projects/dev/C++/pokezoo/src/animation/serializer.cpp",
+  "output": "CMakeFiles/pokezoo.dir/src/animation/serializer.cpp.o"
+},
+{
+  "directory": "/Users/abdoulayedia/Projects/dev/C++/pokezoo/build/osx-debug",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -I/Users/abdoulayedia/Projects/dev/C++/pokezoo/src -I/opt/homebrew/include -isystem /opt/homebrew/include/SDL2  -O0 -fsanitize=address -g -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -o CMakeFiles/pokezoo.dir/src/application/application.cpp.o -c /Users/abdoulayedia/Projects/dev/C++/pokezoo/src/application/application.cpp",
+  "file": "/Users/abdoulayedia/Projects/dev/C++/pokezoo/src/application/application.cpp",
+  "output": "CMakeFiles/pokezoo.dir/src/application/application.cpp.o"
+},
+{
+  "directory": "/Users/abdoulayedia/Projects/dev/C++/pokezoo/build/osx-debug",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -I/Users/abdoulayedia/Projects/dev/C++/pokezoo/src -I/opt/homebrew/include -isystem /opt/homebrew/include/SDL2  -O0 -fsanitize=address -g -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -o CMakeFiles/pokezoo.dir/src/main.cpp.o -c /Users/abdoulayedia/Projects/dev/C++/pokezoo/src/main.cpp",
+  "file": "/Users/abdoulayedia/Projects/dev/C++/pokezoo/src/main.cpp",
+  "output": "CMakeFiles/pokezoo.dir/src/main.cpp.o"
+},
+{
+  "directory": "/Users/abdoulayedia/Projects/dev/C++/pokezoo/build/osx-debug",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -I/Users/abdoulayedia/Projects/dev/C++/pokezoo/src -I/opt/homebrew/include -isystem /opt/homebrew/include/SDL2  -O0 -fsanitize=address -g -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -o CMakeFiles/pokezoo.dir/src/managers/asset/asset_manager.cpp.o -c /Users/abdoulayedia/Projects/dev/C++/pokezoo/src/managers/asset/asset_manager.cpp",
+  "file": "/Users/abdoulayedia/Projects/dev/C++/pokezoo/src/managers/asset/asset_manager.cpp",
+  "output": "CMakeFiles/pokezoo.dir/src/managers/asset/asset_manager.cpp.o"
+},
+{
+  "directory": "/Users/abdoulayedia/Projects/dev/C++/pokezoo/build/osx-debug",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -I/Users/abdoulayedia/Projects/dev/C++/pokezoo/src -I/opt/homebrew/include -isystem /opt/homebrew/include/SDL2  -O0 -fsanitize=address -g -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -o CMakeFiles/pokezoo.dir/src/managers/input/input_manager.cpp.o -c /Users/abdoulayedia/Projects/dev/C++/pokezoo/src/managers/input/input_manager.cpp",
+  "file": "/Users/abdoulayedia/Projects/dev/C++/pokezoo/src/managers/input/input_manager.cpp",
+  "output": "CMakeFiles/pokezoo.dir/src/managers/input/input_manager.cpp.o"
+},
+{
+  "directory": "/Users/abdoulayedia/Projects/dev/C++/pokezoo/build/osx-debug",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -I/Users/abdoulayedia/Projects/dev/C++/pokezoo/src -I/opt/homebrew/include -isystem /opt/homebrew/include/SDL2  -O0 -fsanitize=address -g -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -o CMakeFiles/pokezoo.dir/src/map/map.cpp.o -c /Users/abdoulayedia/Projects/dev/C++/pokezoo/src/map/map.cpp",
+  "file": "/Users/abdoulayedia/Projects/dev/C++/pokezoo/src/map/map.cpp",
+  "output": "CMakeFiles/pokezoo.dir/src/map/map.cpp.o"
+},
+{
+  "directory": "/Users/abdoulayedia/Projects/dev/C++/pokezoo/build/osx-debug",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -I/Users/abdoulayedia/Projects/dev/C++/pokezoo/src -I/opt/homebrew/include -isystem /opt/homebrew/include/SDL2  -O0 -fsanitize=address -g -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -o CMakeFiles/pokezoo.dir/src/sprite/pokemon.cpp.o -c /Users/abdoulayedia/Projects/dev/C++/pokezoo/src/sprite/pokemon.cpp",
+  "file": "/Users/abdoulayedia/Projects/dev/C++/pokezoo/src/sprite/pokemon.cpp",
+  "output": "CMakeFiles/pokezoo.dir/src/sprite/pokemon.cpp.o"
+},
+{
+  "directory": "/Users/abdoulayedia/Projects/dev/C++/pokezoo/build/osx-debug",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -I/Users/abdoulayedia/Projects/dev/C++/pokezoo/src -I/opt/homebrew/include -isystem /opt/homebrew/include/SDL2  -O0 -fsanitize=address -g -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -o CMakeFiles/pokezoo.dir/src/sprite/sprite.cpp.o -c /Users/abdoulayedia/Projects/dev/C++/pokezoo/src/sprite/sprite.cpp",
+  "file": "/Users/abdoulayedia/Projects/dev/C++/pokezoo/src/sprite/sprite.cpp",
+  "output": "CMakeFiles/pokezoo.dir/src/sprite/sprite.cpp.o"
+},
+{
+  "directory": "/Users/abdoulayedia/Projects/dev/C++/pokezoo/build/osx-debug",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -I/Users/abdoulayedia/Projects/dev/C++/pokezoo/src -I/opt/homebrew/include -isystem /opt/homebrew/include/SDL2  -O0 -fsanitize=address -g -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -o CMakeFiles/pokezoo.dir/src/sprite/trainer.cpp.o -c /Users/abdoulayedia/Projects/dev/C++/pokezoo/src/sprite/trainer.cpp",
+  "file": "/Users/abdoulayedia/Projects/dev/C++/pokezoo/src/sprite/trainer.cpp",
+  "output": "CMakeFiles/pokezoo.dir/src/sprite/trainer.cpp.o"
+},
+{
+  "directory": "/Users/abdoulayedia/Projects/dev/C++/pokezoo/build/osx-debug",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -I/Users/abdoulayedia/Projects/dev/C++/pokezoo/src -I/opt/homebrew/include -isystem /opt/homebrew/include/SDL2  -O0 -fsanitize=address -g -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -o CMakeFiles/pokezoo.dir/src/utils/enums_utils.cpp.o -c /Users/abdoulayedia/Projects/dev/C++/pokezoo/src/utils/enums_utils.cpp",
+  "file": "/Users/abdoulayedia/Projects/dev/C++/pokezoo/src/utils/enums_utils.cpp",
+  "output": "CMakeFiles/pokezoo.dir/src/utils/enums_utils.cpp.o"
+},
+{
+  "directory": "/Users/abdoulayedia/Projects/dev/C++/pokezoo/build/osx-debug",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -I/Users/abdoulayedia/Projects/dev/C++/pokezoo/src -I/opt/homebrew/include -isystem /opt/homebrew/include/SDL2  -O0 -fsanitize=address -g -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -o CMakeFiles/pokezoo.dir/src/utils/math_utils.cpp.o -c /Users/abdoulayedia/Projects/dev/C++/pokezoo/src/utils/math_utils.cpp",
+  "file": "/Users/abdoulayedia/Projects/dev/C++/pokezoo/src/utils/math_utils.cpp",
+  "output": "CMakeFiles/pokezoo.dir/src/utils/math_utils.cpp.o"
+},
+{
+  "directory": "/Users/abdoulayedia/Projects/dev/C++/pokezoo/build/osx-debug",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -I/Users/abdoulayedia/Projects/dev/C++/pokezoo/src -I/opt/homebrew/include -isystem /opt/homebrew/include/SDL2  -O0 -fsanitize=address -g -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -o CMakeFiles/pokezoo.dir/src/utils/render_utils.cpp.o -c /Users/abdoulayedia/Projects/dev/C++/pokezoo/src/utils/render_utils.cpp",
+  "file": "/Users/abdoulayedia/Projects/dev/C++/pokezoo/src/utils/render_utils.cpp",
+  "output": "CMakeFiles/pokezoo.dir/src/utils/render_utils.cpp.o"
+},
+{
+  "directory": "/Users/abdoulayedia/Projects/dev/C++/pokezoo/build/osx-debug",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -I/Users/abdoulayedia/Projects/dev/C++/pokezoo/src -I/opt/homebrew/include -isystem /opt/homebrew/include/SDL2  -O0 -fsanitize=address -g -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -o CMakeFiles/pokezoo.dir/src/utils/string_utils.cpp.o -c /Users/abdoulayedia/Projects/dev/C++/pokezoo/src/utils/string_utils.cpp",
+  "file": "/Users/abdoulayedia/Projects/dev/C++/pokezoo/src/utils/string_utils.cpp",
+  "output": "CMakeFiles/pokezoo.dir/src/utils/string_utils.cpp.o"
+}
+]
