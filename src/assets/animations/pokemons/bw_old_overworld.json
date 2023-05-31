@@ -614,7 +614,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 0,
-            "y": 32
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -651,7 +651,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 64,
-            "y": 32
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -688,7 +688,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 128,
-            "y": 32
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -724,7 +724,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 192,
-            "y": 32
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -760,7 +760,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 256,
-            "y": 32
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -797,7 +797,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 320,
-            "y": 32
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -834,7 +834,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 384,
-            "y": 32
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -870,7 +870,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 448,
-            "y": 32
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -906,7 +906,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 512,
-            "y": 32
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -942,7 +942,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 576,
-            "y": 32
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -978,7 +978,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 640,
-            "y": 32
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -1014,7 +1014,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 704,
-            "y": 32
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -1050,7 +1050,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 768,
-            "y": 32
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -1086,7 +1086,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 832,
-            "y": 32
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -1122,7 +1122,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 896,
-            "y": 32
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -1158,7 +1158,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 960,
-            "y": 32
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -1195,7 +1195,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 0,
-            "y": 64
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -1231,7 +1231,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 64,
-            "y": 64
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -1267,7 +1267,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 128,
-            "y": 64
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -1304,7 +1304,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 192,
-            "y": 64
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -1340,7 +1340,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 256,
-            "y": 64
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -1376,7 +1376,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 320,
-            "y": 64
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -1412,7 +1412,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 384,
-            "y": 64
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -1448,7 +1448,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 448,
-            "y": 64
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -1485,7 +1485,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 512,
-            "y": 64
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -1522,7 +1522,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 576,
-            "y": 64
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -1559,7 +1559,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 640,
-            "y": 64
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -1596,7 +1596,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 704,
-            "y": 64
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -1633,7 +1633,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 768,
-            "y": 64
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -1670,7 +1670,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 832,
-            "y": 64
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -1707,7 +1707,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 896,
-            "y": 64
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -1744,7 +1744,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 960,
-            "y": 64
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -1781,7 +1781,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 0,
-            "y": 96
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -1818,7 +1818,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 64,
-            "y": 96
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -1855,7 +1855,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 128,
-            "y": 96
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -1891,7 +1891,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 192,
-            "y": 96
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -1927,7 +1927,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 256,
-            "y": 96
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -1963,7 +1963,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 320,
-            "y": 96
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -1999,7 +1999,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 384,
-            "y": 96
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -2035,7 +2035,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 448,
-            "y": 96
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -2071,7 +2071,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 512,
-            "y": 96
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -2107,7 +2107,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 576,
-            "y": 96
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -2143,7 +2143,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 640,
-            "y": 96
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -2179,7 +2179,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 704,
-            "y": 96
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -2215,7 +2215,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 768,
-            "y": 96
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -2251,7 +2251,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 832,
-            "y": 96
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -2287,7 +2287,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 896,
-            "y": 96
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -2324,7 +2324,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 960,
-            "y": 96
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -2360,7 +2360,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 0,
-            "y": 128
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -2396,7 +2396,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 64,
-            "y": 128
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -2432,7 +2432,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 128,
-            "y": 128
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -2468,7 +2468,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 192,
-            "y": 128
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -2504,7 +2504,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 256,
-            "y": 128
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -2540,7 +2540,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 320,
-            "y": 128
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -2577,7 +2577,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 384,
-            "y": 128
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -2614,7 +2614,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 448,
-            "y": 128
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -2651,7 +2651,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 512,
-            "y": 128
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -2688,7 +2688,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 576,
-            "y": 128
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -2725,7 +2725,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 640,
-            "y": 128
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -2762,7 +2762,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 704,
-            "y": 128
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -2799,7 +2799,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 768,
-            "y": 128
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -2836,7 +2836,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 832,
-            "y": 128
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -2872,7 +2872,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 896,
-            "y": 128
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -2908,7 +2908,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 960,
-            "y": 128
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -2945,7 +2945,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 0,
-            "y": 160
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -2982,7 +2982,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 64,
-            "y": 160
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -3019,7 +3019,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 128,
-            "y": 160
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -3056,7 +3056,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 192,
-            "y": 160
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -3093,7 +3093,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 256,
-            "y": 160
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -3130,7 +3130,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 320,
-            "y": 160
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -3167,7 +3167,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 384,
-            "y": 160
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -3203,7 +3203,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 448,
-            "y": 160
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -3240,7 +3240,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 512,
-            "y": 160
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -3276,7 +3276,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 576,
-            "y": 160
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -3312,7 +3312,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 640,
-            "y": 160
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -3348,7 +3348,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 704,
-            "y": 160
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -3385,7 +3385,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 768,
-            "y": 160
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -3422,7 +3422,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 832,
-            "y": 160
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -3459,7 +3459,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 896,
-            "y": 160
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -3496,7 +3496,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 960,
-            "y": 160
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -3533,7 +3533,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 0,
-            "y": 192
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -3569,7 +3569,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 64,
-            "y": 192
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -3605,7 +3605,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 128,
-            "y": 192
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -3641,7 +3641,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 192,
-            "y": 192
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -3677,7 +3677,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 256,
-            "y": 192
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -3713,7 +3713,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 320,
-            "y": 192
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -3749,7 +3749,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 384,
-            "y": 192
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -3786,7 +3786,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 448,
-            "y": 192
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -3823,7 +3823,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 512,
-            "y": 192
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -3859,7 +3859,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 576,
-            "y": 192
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -3895,7 +3895,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 640,
-            "y": 192
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -3931,7 +3931,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 704,
-            "y": 192
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -3967,7 +3967,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 768,
-            "y": 192
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -4003,7 +4003,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 832,
-            "y": 192
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -4039,7 +4039,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 896,
-            "y": 192
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -4075,7 +4075,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 960,
-            "y": 192
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -4112,7 +4112,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 0,
-            "y": 224
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -4149,7 +4149,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 64,
-            "y": 224
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -4185,7 +4185,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 128,
-            "y": 224
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -4221,7 +4221,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 192,
-            "y": 224
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -4257,7 +4257,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 256,
-            "y": 224
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -4293,7 +4293,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 320,
-            "y": 224
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -4329,7 +4329,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 384,
-            "y": 224
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -4365,7 +4365,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 448,
-            "y": 224
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -4401,7 +4401,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 512,
-            "y": 224
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -4437,7 +4437,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 576,
-            "y": 224
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -4474,7 +4474,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 640,
-            "y": 224
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -4511,7 +4511,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 704,
-            "y": 224
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -4548,7 +4548,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 768,
-            "y": 224
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -4585,7 +4585,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 832,
-            "y": 224
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -4621,7 +4621,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 896,
-            "y": 224
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -4657,7 +4657,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 960,
-            "y": 224
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -4693,7 +4693,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 0,
-            "y": 256
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -4729,7 +4729,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 64,
-            "y": 256
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -4765,7 +4765,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 128,
-            "y": 256
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -4802,7 +4802,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 192,
-            "y": 256
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -4839,7 +4839,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 256,
-            "y": 256
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -4875,7 +4875,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 320,
-            "y": 256
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -4911,7 +4911,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 384,
-            "y": 256
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -4947,7 +4947,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 448,
-            "y": 256
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -4983,7 +4983,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 512,
-            "y": 256
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -5019,7 +5019,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 576,
-            "y": 256
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -5055,7 +5055,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 640,
-            "y": 256
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -5092,7 +5092,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 704,
-            "y": 256
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -5129,7 +5129,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 768,
-            "y": 256
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -5166,7 +5166,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 832,
-            "y": 256
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -5203,7 +5203,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 896,
-            "y": 256
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -5240,7 +5240,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 960,
-            "y": 256
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -5276,7 +5276,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 0,
-            "y": 288
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -5313,7 +5313,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 64,
-            "y": 288
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -5350,7 +5350,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 128,
-            "y": 288
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -5387,7 +5387,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 192,
-            "y": 288
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -5423,7 +5423,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 256,
-            "y": 288
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -5459,7 +5459,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 320,
-            "y": 288
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -5496,7 +5496,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 384,
-            "y": 288
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -5532,7 +5532,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 448,
-            "y": 288
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -5568,7 +5568,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 512,
-            "y": 288
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -5604,7 +5604,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 576,
-            "y": 288
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -5640,7 +5640,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 640,
-            "y": 288
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -5676,7 +5676,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 704,
-            "y": 288
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -5712,7 +5712,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 768,
-            "y": 288
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -5748,7 +5748,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 832,
-            "y": 288
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -5784,7 +5784,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 896,
-            "y": 288
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -5820,7 +5820,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 960,
-            "y": 288
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -5856,7 +5856,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 0,
-            "y": 320
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -5892,7 +5892,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 64,
-            "y": 320
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -5928,7 +5928,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 128,
-            "y": 320
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -5964,7 +5964,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 192,
-            "y": 320
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -6000,7 +6000,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 256,
-            "y": 320
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -6037,7 +6037,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 320,
-            "y": 320
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -6074,7 +6074,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 384,
-            "y": 320
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -6111,7 +6111,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 448,
-            "y": 320
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -6148,7 +6148,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 512,
-            "y": 320
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -6185,7 +6185,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 576,
-            "y": 320
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -6222,7 +6222,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 640,
-            "y": 320
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -6259,7 +6259,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 704,
-            "y": 320
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -6296,7 +6296,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 768,
-            "y": 320
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -6333,7 +6333,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 832,
-            "y": 320
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -6369,7 +6369,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 896,
-            "y": 320
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -6405,7 +6405,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 960,
-            "y": 320
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -6442,7 +6442,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 0,
-            "y": 352
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -6478,7 +6478,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 64,
-            "y": 352
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -6515,7 +6515,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 128,
-            "y": 352
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -6552,7 +6552,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 192,
-            "y": 352
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -6589,7 +6589,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 256,
-            "y": 352
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -6625,7 +6625,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 320,
-            "y": 352
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -6661,7 +6661,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 384,
-            "y": 352
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -6697,7 +6697,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 448,
-            "y": 352
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -6733,7 +6733,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 512,
-            "y": 352
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -6770,7 +6770,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 576,
-            "y": 352
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -6807,7 +6807,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 640,
-            "y": 352
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -6843,7 +6843,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 704,
-            "y": 352
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -6879,7 +6879,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 768,
-            "y": 352
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -6916,7 +6916,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 832,
-            "y": 352
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -6953,7 +6953,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 896,
-            "y": 352
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -6990,7 +6990,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 960,
-            "y": 352
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -7026,7 +7026,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 0,
-            "y": 384
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -7062,7 +7062,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 64,
-            "y": 384
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -7098,7 +7098,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 128,
-            "y": 384
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -7135,7 +7135,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 192,
-            "y": 384
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -7172,7 +7172,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 256,
-            "y": 384
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -7209,7 +7209,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 320,
-            "y": 384
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -7245,7 +7245,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 384,
-            "y": 384
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -7281,7 +7281,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 448,
-            "y": 384
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -7318,7 +7318,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 512,
-            "y": 384
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -7355,7 +7355,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 576,
-            "y": 384
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -7391,7 +7391,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 640,
-            "y": 384
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -7427,7 +7427,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 704,
-            "y": 384
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -7463,7 +7463,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 768,
-            "y": 384
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -7499,7 +7499,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 832,
-            "y": 384
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -7536,7 +7536,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 896,
-            "y": 384
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -7572,7 +7572,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 960,
-            "y": 384
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -7609,7 +7609,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 0,
-            "y": 416
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -7645,7 +7645,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 64,
-            "y": 416
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -7682,7 +7682,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 128,
-            "y": 416
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -7719,7 +7719,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 192,
-            "y": 416
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -7756,7 +7756,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 256,
-            "y": 416
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -7792,7 +7792,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 320,
-            "y": 416
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -7828,7 +7828,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 384,
-            "y": 416
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -7865,7 +7865,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 448,
-            "y": 416
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -7902,7 +7902,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 512,
-            "y": 416
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -7939,7 +7939,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 576,
-            "y": 416
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -7976,7 +7976,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 640,
-            "y": 416
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -8013,7 +8013,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 704,
-            "y": 416
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -8050,7 +8050,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 768,
-            "y": 416
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -8086,7 +8086,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 832,
-            "y": 416
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -8122,7 +8122,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 896,
-            "y": 416
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -8158,7 +8158,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 960,
-            "y": 416
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -8195,7 +8195,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 0,
-            "y": 448
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -8232,7 +8232,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 64,
-            "y": 448
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -8269,7 +8269,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 128,
-            "y": 448
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -8306,7 +8306,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 192,
-            "y": 448
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -8342,7 +8342,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 256,
-            "y": 448
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -8378,7 +8378,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 320,
-            "y": 448
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -8415,7 +8415,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 384,
-            "y": 448
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -8452,7 +8452,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 448,
-            "y": 448
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -8489,7 +8489,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 512,
-            "y": 448
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -8526,7 +8526,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 576,
-            "y": 448
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -8563,7 +8563,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 640,
-            "y": 448
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -8600,7 +8600,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 704,
-            "y": 448
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -8636,7 +8636,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 768,
-            "y": 448
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -8672,7 +8672,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 832,
-            "y": 448
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -8708,7 +8708,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 896,
-            "y": 448
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -8744,7 +8744,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 960,
-            "y": 448
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -8780,7 +8780,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 0,
-            "y": 480
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -8816,7 +8816,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 64,
-            "y": 480
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -8852,7 +8852,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 128,
-            "y": 480
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -8889,7 +8889,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 192,
-            "y": 480
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -8925,7 +8925,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 256,
-            "y": 480
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -8961,7 +8961,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 320,
-            "y": 480
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -8997,7 +8997,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 384,
-            "y": 480
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -9033,7 +9033,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 448,
-            "y": 480
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -9069,7 +9069,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 512,
-            "y": 480
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -9105,7 +9105,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 576,
-            "y": 480
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -9141,7 +9141,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 640,
-            "y": 480
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -9178,7 +9178,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 704,
-            "y": 480
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -9215,7 +9215,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 768,
-            "y": 480
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -9252,7 +9252,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 832,
-            "y": 480
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -9289,7 +9289,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 896,
-            "y": 480
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -9326,7 +9326,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 960,
-            "y": 480
+            "y": 0
           },
           "size": {
             "width": 32,
@@ -9363,7 +9363,7 @@
           "preset": "walk_2x3_flipped",
           "start": {
             "x": 0,
-            "y": 512
+            "y": 0
           },
           "size": {
             "width": 32,
