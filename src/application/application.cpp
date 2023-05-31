@@ -115,8 +115,7 @@ void Application::init_fonts() {
 void Application::init_trainer() {
   LoggerManager::log_info("Initializing trainer");
 
-  Trainer trainer("bw_overworld.png", 0, 0, 32, 32);
-  trainer.set_name("Ash");
+  Trainer trainer("main.cpp", "bw_overworld.png", 0, 0, 32, 32);
 
   _trainer = std::make_unique<Trainer>(trainer);
   AnimationSerializer::load_animations(_trainer->get_animation_controller(),
@@ -133,10 +132,29 @@ void Application::init_pokemons() {
   auto loaded_pokemons =
       Pokemon::load_pokemons("../src/assets/json/bw_old_overworld.json");
 
+  // sort by pokedex_id
+  std::vector<Pokemon> pokemons;
+
   for (auto &[name, pokemon] : loaded_pokemons) {
-    pokemon.set_position(rand() % 1000, rand() % 1000);
+    pokemons.push_back(pokemon);
+  }
+
+  std::sort(
+      pokemons.begin(), pokemons.end(), [](const Pokemon &a, const Pokemon &b) {
+        return std::stoi(a.get_pokedex_id()) < std::stoi(b.get_pokedex_id());
+      });
+
+  int x = 256, y = 0;
+  for (auto &pokemon : pokemons) {
+    pokemon.set_position(x, y);
     pokemon.get_animation_controller().play_animation("walk_down");
     _pokemons.push_back(std::make_shared<Pokemon>(pokemon));
+
+    x += 64;
+    if (x > 1000) {
+      x = 256;
+      y += 64;
+    }
   }
 
   LoggerManager::log_info("Initializing sprites done");
