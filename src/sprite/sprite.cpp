@@ -4,19 +4,22 @@
 #include <managers/logger/logger_manager.h>
 #include <utils/render_utils.h>
 
-Sprite::Sprite(const char *texture_name, int x, int y, int width, int height,
-               float scale) {
+Sprite::Sprite(const std::string &name, const char *texture_name, int x, int y,
+               int width, int height, float scale) {
   _texture = AssetManager::get_texture(texture_name);
-  init(x, y, width, height, scale);
+  init(name, x, y, width, height, scale);
 }
 
-Sprite::Sprite(SDL_Texture *texture, int x, int y, int width, int height,
-               float scale) {
+Sprite::Sprite(const std::string &name, SDL_Texture *texture, int x, int y,
+               int width, int height, float scale) {
   _texture = texture;
-  init(x, y, width, height, scale);
+  init(name, x, y, width, height, scale);
 }
 
-void Sprite::init(int x, int y, int width, int height, float scale) {
+void Sprite::init(const std::string &name, int x, int y, int width, int height,
+                  float scale) {
+  _name = name;
+
   _src_rect.x = 0;
   _src_rect.y = 0;
   _src_rect.w = width;
@@ -65,8 +68,8 @@ void Sprite::render(SDL_Renderer *renderer) {
       ss << "x: " << _dest_rect.x << " y: " << _dest_rect.y;
       RenderUtils::render_text(
           renderer, AssetManager::get_font("Poppins/Poppins-Regular.ttf", 16),
-          ss.str().c_str(), {255, 255, 255, 255}, _dest_rect.x,
-          _dest_rect.y - 16, true);
+          ss.str().c_str(), {255, 255, 255, 255}, _dest_rect.x + 32,
+          _dest_rect.y - 64, true);
     }
   }
 }

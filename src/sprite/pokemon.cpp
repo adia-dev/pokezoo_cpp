@@ -10,11 +10,11 @@ using json = nlohmann::json;
 
 Pokemon::Pokemon(const std::string &name, const char *texture_name, int x,
                  int y, int width, int height, float scale)
-    : _name(name), Sprite(texture_name, x, y, width, height, scale) {}
+    : Sprite(name, texture_name, x, y, width, height, scale) {}
 
 Pokemon::Pokemon(const std::string &name, SDL_Texture *texture, int x, int y,
                  int width, int height, float scale)
-    : _name(name), Sprite(texture, x, y, width, height, scale) {}
+    : Sprite(name, texture, x, y, width, height, scale) {}
 
 void Pokemon::render(SDL_Renderer *renderer) {
   // Custom rendering logic for the Trainer class
@@ -136,6 +136,9 @@ Pokemon::load_pokemons(const std::string &file_path) {
         width = pokemon["properties"]["width"].get<int>();
         height = pokemon["properties"]["height"].get<int>();
 
+        pokemons[pokemon_name].set_pokedex_id(
+            std::to_string(pokemon["id"].get<int>()));
+        pokemons[pokemon_name].set_name(pokemon_name);
         pokemons[pokemon_name].set_walk_speed(walk_speed);
         pokemons[pokemon_name].set_run_speed(run_speed);
         pokemons[pokemon_name].set_scale(scale);

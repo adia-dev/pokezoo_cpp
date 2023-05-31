@@ -4,8 +4,8 @@
 
 class Trainer : public Sprite {
 public:
-  Trainer(const char *texture_name, int x, int y, int width, int height,
-          float scale = 1);
+  Trainer(const std::string &name, const char *texture_name, int x, int y,
+          int width, int height, float scale = 1);
 
   void render(SDL_Renderer *renderer) override;
   void update(double delta_time) override;

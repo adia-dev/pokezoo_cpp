@@ -9,10 +9,10 @@
 class Sprite {
 public:
   Sprite() = default;
-  Sprite(const char *texture_name, int x, int y, int width, int height,
-         float scale = 1);
-  Sprite(SDL_Texture *texture, int x, int y, int width, int height,
-         float scale = 1);
+  Sprite(const std::string &name, const char *texture_name, int x, int y,
+         int width, int height, float scale = 1);
+  Sprite(const std::string &name, SDL_Texture *texture, int x, int y, int width,
+         int height, float scale = 1);
   virtual ~Sprite() = default;
 
   virtual void render(SDL_Renderer *renderer);
@@ -129,5 +129,6 @@ protected:
   float _scale = 1;
   bool _debug = false;
 
-  void init(int x, int y, int width, int height, float scale);
+  void init(const std::string &name, int x, int y, int width, int height,
+            float scale);
 };

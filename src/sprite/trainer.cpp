@@ -4,9 +4,9 @@
 #include <utils/math_utils.h>
 #include <utils/string_utils.h>
 
-Trainer::Trainer(const char *texture_name, int x, int y, int width, int height,
-                 float scale)
-    : Sprite(texture_name, x, y, width, height, scale) {}
+Trainer::Trainer(const std::string &name, const char *texture_name, int x,
+                 int y, int width, int height, float scale)
+    : Sprite(name, texture_name, x, y, width, height, scale) {}
 
 void Trainer::render(SDL_Renderer *renderer) {
   // Custom rendering logic for the Trainer class
