@@ -146,8 +146,11 @@ void Application::init_pokemons() {
 
   int x = 256, y = 0;
   for (auto &pokemon : pokemons) {
+    if (pokemon.get_src_rect().w < 64)
+      continue;
     pokemon.set_position(x, y);
     pokemon.get_animation_controller().play_animation("walk_down");
+    pokemon.set_scale(2.0f);
     _pokemons.push_back(std::make_shared<Pokemon>(pokemon));
 
     x += 64;
@@ -173,12 +176,13 @@ void Application::adjust_window_scale() {
       "Default window size: " + std::to_string(DEFAULT_WINDOW_WIDTH) + "x" +
       std::to_string(DEFAULT_WINDOW_HEIGHT));
 
-  if (_config->window_config.width != DEFAULT_WINDOW_WIDTH ||
-      _config->window_config.height != DEFAULT_WINDOW_HEIGHT) {
-    float width_scale =
-        (float)_config->window_config.width / DEFAULT_WINDOW_WIDTH;
-    float height_scale =
-        (float)_config->window_config.height / DEFAULT_WINDOW_HEIGHT;
+  int window_width, window_height;
+  SDL_GetWindowSize(_window.get(), &window_width, &window_height);
+
+  if (_config->window_config.width != window_width ||
+      _config->window_config.height != window_height) {
+    float width_scale = (float)_config->window_config.width / window_width;
+    float height_scale = (float)_config->window_config.height / window_height;
 
     if (width_scale != height_scale) {
       LoggerManager::log_warning(
@@ -190,6 +194,7 @@ void Application::adjust_window_scale() {
     LoggerManager::log_warning("Window scale set to " +
                                std::to_string(width_scale) + "x" +
                                std::to_string(height_scale));
+  } else {
   }
 }
 
