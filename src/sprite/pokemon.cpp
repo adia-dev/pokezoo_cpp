@@ -143,6 +143,7 @@ Pokemon::load_pokemons(const std::string &file_path) {
         pokemons[pokemon_name].set_run_speed(run_speed);
         pokemons[pokemon_name].set_scale(scale);
         pokemons[pokemon_name].set_size(width, height);
+        pokemons[pokemon_name].set_source_rect(0, 0, width, height);
       }
 
       if (pokemon.contains("stats") && pokemon["stats"].is_object()) {
