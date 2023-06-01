@@ -1,7 +1,9 @@
 #include "application.h"
 #include <animation/serializer.h>
 #include <managers/input/input_manager.h>
+#include <utils/enums_utils.h>
 #include <utils/render_utils.h>
+#include <utils/string_utils.h>
 
 void Application::run() {
   Application *app = Application::get();
@@ -38,6 +40,10 @@ void Application::quit() {
 #ifdef __EMSCRIPTEN__
   emscripten_cancel_main_loop();
 #endif
+
+  app->clean();
+
+  exit(EXIT_SUCCESS);
 }
 
 void Application::init() {
@@ -127,7 +133,7 @@ void Application::init_trainer() {
 }
 
 void Application::init_pokemons() {
-  LoggerManager::log_info("Initializing sprites");
+  LoggerManager::log_info("Initializing pokemons");
 
   auto loaded_pokemons =
       Pokemon::load_pokemons("../src/assets/json/bw_old_overworld.json");
@@ -146,8 +152,8 @@ void Application::init_pokemons() {
 
   int x = 256, y = 0;
   for (auto &pokemon : pokemons) {
-    if (pokemon.get_src_rect().w < 64)
-      continue;
+    // if (pokemon.get_src_rect().w < 64)
+    //   continue;
     pokemon.set_position(x, y);
     pokemon.get_animation_controller().play_animation("walk_down");
     pokemon.set_scale(2.0f);
@@ -160,7 +166,7 @@ void Application::init_pokemons() {
     }
   }
 
-  LoggerManager::log_info("Initializing sprites done");
+  LoggerManager::log_info("Initializing pokemons done");
 }
 
 void Application::adjust_window_scale() {
@@ -216,9 +222,20 @@ void Application::update() {
     _trainer->update(_delta_time);
   }
 
-  // update sprites
-  for (auto &sprite : _pokemons) {
-    sprite->update(_delta_time);
+  // update pokemons
+  for (auto &pokemon : _pokemons) {
+    Direction direction =
+        Vector2f::direction_from_vector(InputManager::get_directional_input());
+
+    if (direction == Direction::NONE)
+      direction = Direction::DOWN;
+    else
+      pokemon->get_animation_controller().play_animation(
+          "walk_" +
+          StringUtils::to_lower(EnumsUtils::direction_to_string(direction)));
+
+    pokemon->set_direction(direction);
+    pokemon->update(_delta_time);
   }
 }
 
@@ -246,8 +263,8 @@ void Application::render() {
                            _config->window_config.tile_size,
                            {255, 255, 255, 100});
 
-  for (auto &sprite : _pokemons) {
-    sprite->render(_renderer.get());
+  for (auto &pokemon : _pokemons) {
+    pokemon->render(_renderer.get());
   }
 
   if (_trainer) {

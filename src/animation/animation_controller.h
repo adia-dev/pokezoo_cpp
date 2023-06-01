@@ -48,6 +48,11 @@ public:
 
   int get_current_frame_count() const { return _timer; }
 
+  std::map<std::string, Animation> &get_animations() { return _animations; }
+  void set_animations(const std::map<std::string, Animation> &animations) {
+    _animations = animations;
+  }
+
 private:
   bool _is_playing = true;
 

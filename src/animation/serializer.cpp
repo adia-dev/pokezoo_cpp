@@ -247,19 +247,28 @@ void AnimationSerializer::walk_2by3_preset(AnimationController &controller,
         Animation idle_animation("idle_" + directions[i],
                                  AnimationDirection::LOOP);
         Frame frame;
-        frame.rect = {start.x + j * size.x,
-                      start.y + (i == 3 ? i - 1 : 1) * size.y, size.x, size.y};
+        frame.rect = {start.x, start.y + i * size.y, size.x, size.y};
         frame.duration = 100;
-        frame.flipped = i == 3;
+        frame.flipped = false;
+
+        if (i == 3) {
+          frame.flipped = true;
+          frame.rect.y = start.y + (i - 1) * size.y;
+        }
         idle_animation.frames.push_back(frame);
         controller.add_animation(idle_animation.name, idle_animation);
       }
 
       Frame frame;
-      frame.rect = {start.x + j * size.x,
-                    start.y + (i == 3 ? i - 1 : 1) * size.y, size.x, size.y};
+      frame.rect = {start.x + j * size.x, start.y + i * size.y, size.x, size.y};
       frame.duration = 100;
-      frame.flipped = i == 3;
+      frame.flipped = false;
+
+      if (i == 3) {
+        frame.flipped = true;
+        frame.rect.y = start.y + (i - 1) * size.y;
+      }
+
       new_animation.frames.push_back(frame);
       controller.add_animation(new_animation.name, new_animation);
     }

@@ -45,11 +45,15 @@ void Sprite::render(SDL_Renderer *renderer) {
     return;
   }
 
+  bool flip = false;
+
   if (!_animation_controller.get_current_animation().empty()) {
     _src_rect = _animation_controller.get_current_frame().rect;
+    flip = _animation_controller.get_current_frame().flipped;
   }
 
-  SDL_RenderCopy(renderer, _texture, &_src_rect, &_dest_rect);
+  SDL_RenderCopyEx(renderer, _texture, &_src_rect, &_dest_rect, 0, nullptr,
+                   flip ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
 
   if (_debug || ApplicationConfig::is_debug_mode) {
 
@@ -66,6 +70,10 @@ void Sprite::render(SDL_Renderer *renderer) {
       ss << "id: " << _id << '\n';
       ss << "name: " << _name << '\n';
       ss << "x: " << _dest_rect.x << " y: " << _dest_rect.y;
+      ss << "animation: " << _animation_controller.get_current_animation()
+         << '\n';
+      ss << "animation count: " << _animation_controller.get_animations().size()
+         << '\n';
       RenderUtils::render_text(
           renderer, AssetManager::get_font("Poppins/Poppins-Regular.ttf", 16),
           ss.str().c_str(), {255, 255, 255, 255}, _dest_rect.x + 32,

@@ -1,3 +1,4 @@
+const { Console } = require('console');
 const fs = require('fs');
 
 // Check if the file path is provided as a command-line argument
@@ -15,9 +16,26 @@ const SPRITESHEET_WIDTH = 1024;
 const SPRITESHEET_HEIGHT = 5408;
 const SKIPS = [
     {
-        from: { x: 832, y: 1536 },
+        reason: "Burmy variants",
+        from: { x: 704, y: 3872 },
+        to: { x: 768, y: 3872 }
+    },
+    {
+        reason: "Wormadam variants",
+        from: { x: 896, y: 3872 },
+        to: { x: 960, y: 3872 }
+    },
+    {
+        reason: "Unown variants",
+        from: { x: 768, y: 1536 },
         to: { x: 512, y: 1760 }
-    }
+    },
+    {
+        reason: "Deoxys variants",
+        from: { x: 896, y: 3552 },
+        to: { x: 64, y: 3744 }
+    },
+
 ];
 const POKEMON_WITH_GENDERS_IDS = [3, 25, 154, 202, 208, 214, 415, 443, 444, 445, 449, 450, 487];
 const BIG_POKEMONS = ["Steelix", "Lugia", "Ho-oh", "Wailord", "Groudon", "Kyogre", "Rayquaza", "Dialga", "Palkia", "Regigigas", "Giratina", "Arceus"];
@@ -71,23 +89,34 @@ function process_pokemon_line(line) {
 
     x += DEFAULT_WIDTH * (is_big_pokemon ? 4 : 2);
 
-    if (pokemon.name === "Unown") {
-        x = 512;
-        y = 1760;
-        console.log(`Skipped ${pokemon.name} variants at ${x}, ${y}`);
-    }
 
-    if (pokemon.name === "Deoxys") {
-        console.log(`Skipped ${pokemon.name} variants at ${x}, ${y}`);
-        x = DEFAULT_WIDTH * 2;
-        y += DEFAULT_HEIGHT * (big_pokemon_in_row ? 6 : 4);
-    }
+    const skip = SKIPS.find((skip) => x === skip.from.x && y === skip.from.y);
+    if (skip) {
+        if (skip.reason)
+            console.log(`Skipped ${skip.reason} from (${skip.from.x}, ${skip.from.y}) to (${skip.to.x}, ${skip.to.y})`);
 
-    if (x >= SPRITESHEET_WIDTH) {
+        if (skip.from.x > skip.to.x || skip.to.x >= SPRITESHEET_WIDTH) {
+            big_pokemon_in_row = false;
+        }
+
+        x = skip.to.x;
+        y = skip.to.y;
+
+        if (x >= SPRITESHEET_WIDTH) {
+            x = 0;
+            y += DEFAULT_HEIGHT * (big_pokemon_in_row ? 6 : 4);
+            big_pokemon_in_row = false;
+            console.log(`new x: ${x}, new y: ${y}`);
+            console.log(pokemon.id)
+        }
+    } else if (x >= SPRITESHEET_WIDTH) {
         x = 0;
         y += DEFAULT_HEIGHT * (big_pokemon_in_row ? 6 : 4);
         big_pokemon_in_row = false;
     }
+
+
+
 }
 
 /**
