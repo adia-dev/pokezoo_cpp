@@ -2,9 +2,10 @@
 #include <animation/serializer.h>
 #include <fstream>
 #include <managers/asset/asset_manager.h>
+#include <managers/input/input_manager.h>
 #include <managers/logger/logger_manager.h>
 #include <parsers/json.hpp>
-#include <utils/enums_utils.h>
+#include <utils/render_utils.h>
 
 using json = nlohmann::json;
 
@@ -22,6 +23,34 @@ void Pokemon::render(SDL_Renderer *renderer) {
 
   // Call the base class render function to render the Sprite
   Sprite::render(renderer);
+  if (_debug || ApplicationConfig::is_debug_mode) {
+
+    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+    SDL_RenderDrawRect(renderer, &_dest_rect);
+
+    if (contains(InputManager::get_mouse_position())) {
+      // TTF_HINTING_LIGHT_SUBPIXEL apply this to the font
+      TTF_SetFontHinting(
+          AssetManager::get_font("Poppins/Poppins-Regular.ttf", 16),
+          TTF_HINTING_LIGHT_SUBPIXEL);
+
+      std::stringstream ss;
+      ss << "id: " << _id << '\n';
+      ss << "name: " << _name << '\n';
+      ss << "x: " << _dest_rect.x << " y: " << _dest_rect.y;
+      ss << "animation: " << _animation_controller.get_current_animation()
+         << '\n';
+      ss << "animation count: " << _animation_controller.get_animations().size()
+         << '\n';
+      ss << "types: " << get_types().size() << '\n';
+      ss << "types: " << get_types_as_str() << '\n';
+      ss << "stats:\n" << _stats << '\n';
+      RenderUtils::render_text(
+          renderer, AssetManager::get_font("Poppins/Poppins-Regular.ttf", 16),
+          ss.str().c_str(), {255, 255, 255, 255}, _dest_rect.x + 32,
+          _dest_rect.y - 64, true);
+    }
+  }
 }
 
 void Pokemon::update(double delta_time) {
@@ -110,18 +139,18 @@ Pokemon::load_pokemons(const std::string &file_path) {
     return {};
   }
 
-  std::string pokemon_name;
-  float walk_speed = 100.f;
-  float run_speed = 200.f;
-  float scale = 1.f;
-  int width = 32;
-  int height = 32;
-
-  Stats stats;
-
-  std::vector<Type> types;
-
   for (const auto &pokemon : json_data["pokemons"]) {
+
+    std::string pokemon_name;
+    float walk_speed = 100.f;
+    float run_speed = 200.f;
+    float scale = 1.f;
+    int width = 32;
+    int height = 32;
+
+    Stats stats;
+
+    std::vector<Type> types;
 
     try {
       pokemon_name = pokemon["name"].get<std::string>();
@@ -158,8 +187,8 @@ Pokemon::load_pokemons(const std::string &file_path) {
 
       if (pokemon.contains("types") && pokemon["types"].is_array()) {
         for (const auto &type : pokemon["types"]) {
-          types.push_back(
-              EnumsUtils::type_from_string(type.get<std::string>()));
+          types.push_back(EnumsUtils::type_from_string(
+              StringUtils::to_upper(type.get<std::string>())));
         }
         pokemons[pokemon_name].set_types(types);
       }

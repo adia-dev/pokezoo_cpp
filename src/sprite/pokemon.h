@@ -4,6 +4,7 @@
 #include "sprite.h"
 #include <filesystem>
 #include <structs/stats.h>
+#include <utils/enums_utils.h>
 
 class Pokemon : public Sprite {
 public:
@@ -43,6 +44,19 @@ public:
 
   void set_types(const std::vector<Type> &types) { _types = types; }
   const std::vector<Type> &get_types() const { return _types; }
+  const std::string get_types_as_str() const {
+    std::ostringstream ss;
+    for (const Type &type : _types) {
+      ss << EnumsUtils::type_to_string(type) << ", ";
+    }
+
+    std::string result = ss.str();
+    if (!result.empty()) {
+      result = result.substr(0, result.length() - 2);
+    }
+
+    return result;
+  }
 
   static std::map<std::string, Pokemon>
   load_pokemons(const std::string &file_path);

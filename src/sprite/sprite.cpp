@@ -54,32 +54,6 @@ void Sprite::render(SDL_Renderer *renderer) {
 
   SDL_RenderCopyEx(renderer, _texture, &_src_rect, &_dest_rect, 0, nullptr,
                    flip ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
-
-  if (_debug || ApplicationConfig::is_debug_mode) {
-
-    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-    SDL_RenderDrawRect(renderer, &_dest_rect);
-
-    if (contains(InputManager::get_mouse_position())) {
-      // TTF_HINTING_LIGHT_SUBPIXEL apply this to the font
-      TTF_SetFontHinting(
-          AssetManager::get_font("Poppins/Poppins-Regular.ttf", 16),
-          TTF_HINTING_LIGHT_SUBPIXEL);
-
-      std::stringstream ss;
-      ss << "id: " << _id << '\n';
-      ss << "name: " << _name << '\n';
-      ss << "x: " << _dest_rect.x << " y: " << _dest_rect.y;
-      ss << "animation: " << _animation_controller.get_current_animation()
-         << '\n';
-      ss << "animation count: " << _animation_controller.get_animations().size()
-         << '\n';
-      RenderUtils::render_text(
-          renderer, AssetManager::get_font("Poppins/Poppins-Regular.ttf", 16),
-          ss.str().c_str(), {255, 255, 255, 255}, _dest_rect.x + 32,
-          _dest_rect.y - 64, true);
-    }
-  }
 }
 
 void Sprite::update(double delta_time) {

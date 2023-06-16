@@ -108,7 +108,7 @@ Type EnumsUtils::type_from_string(const std::string &type) {
   return Type::UNKNOWN;
 }
 
-std::string type_to_string(Type type) {
+std::string EnumsUtils::type_to_string(Type type) {
   switch (type) {
   case Type::NORMAL:
     return "NORMAL";
